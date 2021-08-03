@@ -1,7 +1,3 @@
-using FA.JustBlog.Data.Infrastructure;
-using FA.JustBlog.Data.Infrastructure.Repositories;
-using FA.JustBlog.Models.Common;
-using FA.JustBlog.Services;
 using System;
 
 using Unity;
@@ -45,13 +41,7 @@ namespace FA.JustBlog.WebMVC
             // container.LoadConfiguration();
 
             // TODO: Register your type's mappings here.
-            container.RegisterType<IUnitOfWork, UnitOfWork>();
-            container.RegisterType<IGenericRepository<Category>, GenericRepository<Category>>();
-            container.RegisterType<IGenericRepository<Tag>, GenericRepository<Tag>>();
-            container.RegisterType<IGenericRepository<Category>, GenericRepository<Category>>();
-            container.RegisterType<ICategoryServices, CategoryServices>();
-            container.RegisterType<IPostServices, PostServices>();
-            container.RegisterType<ITagServices, TagServices>();
+            // container.RegisterType<IProductRepository, ProductRepository>();
         }
     }
 }
