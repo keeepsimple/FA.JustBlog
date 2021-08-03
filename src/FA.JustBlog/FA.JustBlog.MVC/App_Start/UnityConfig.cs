@@ -1,12 +1,12 @@
-using FA.JustBlog.Data.Infrastructure;
 using FA.JustBlog.Data.Infrastructure.Repositories;
+using FA.JustBlog.Data.Infrastructure;
 using FA.JustBlog.Models.Common;
 using FA.JustBlog.Services;
 using System;
 
 using Unity;
 
-namespace FA.JustBlog.WebMVC
+namespace FA.JustBlog.MVC
 {
     /// <summary>
     /// Specifies the Unity configuration for the main container.

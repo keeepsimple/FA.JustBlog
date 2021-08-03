@@ -1,0 +1,9 @@
+﻿@model IEnumerable<Tag>
+
+<h3>Popular Tags</h3>
+@foreach (var item in Model)
+{
+    <a href="#" class="badge rounded-pill bg-primary" style="text-decoration: none; color: white">
+        @item.Name
+    </a>
+}

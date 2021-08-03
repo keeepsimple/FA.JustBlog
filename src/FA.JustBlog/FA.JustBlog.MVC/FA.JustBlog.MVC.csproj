@@ -10,17 +10,17 @@
     <ProductVersion>
     </ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{5FA85ABE-08DE-46A3-85FB-C5AFC623481A}</ProjectGuid>
+    <ProjectGuid>{DF8F0FB8-42A3-4CD4-B580-AB1A2564C504}</ProjectGuid>
     <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>FA.JustBlog.WebMVC</RootNamespace>
-    <AssemblyName>FA.JustBlog.WebMVC</AssemblyName>
+    <RootNamespace>FA.JustBlog.MVC</RootNamespace>
+    <AssemblyName>FA.JustBlog.MVC</AssemblyName>
     <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <MvcBuildViews>false</MvcBuildViews>
     <UseIISExpress>true</UseIISExpress>
     <Use64BitIISExpress />
-    <IISExpressSSLPort>44381</IISExpressSSLPort>
+    <IISExpressSSLPort>44349</IISExpressSSLPort>
     <IISExpressAnonymousAuthentication />
     <IISExpressWindowsAuthentication />
     <IISExpressUseClassicPipelineMode />
@@ -150,6 +150,8 @@
     <Compile Include="App_Start\UnityConfig.cs" />
     <Compile Include="App_Start\UnityMvcActivator.cs" />
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
+    <Compile Include="Areas\Admin\Controllers\CategoryManagementController.cs" />
+    <Compile Include="Areas\Admin\Controllers\TagManagementController.cs" />
     <Compile Include="Areas\Admin\ViewModels\CategoryViewModel.cs" />
     <Compile Include="Areas\Admin\ViewModels\TagViewModel.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -728,6 +730,29 @@
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="Scripts\bootstrap.bundle.js" />
+    <Content Include="Scripts\bootstrap.bundle.min.js" />
+    <Content Include="Scripts\bootstrap.js" />
+    <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Scripts\esm\popper-utils.js" />
+    <Content Include="Scripts\esm\popper-utils.min.js" />
+    <Content Include="Scripts\esm\popper.js" />
+    <Content Include="Scripts\esm\popper.min.js" />
+    <Content Include="Scripts\index.js.flow" />
+    <Content Include="Scripts\esm\popper.min.js.map" />
+    <Content Include="Scripts\esm\popper.js.map" />
+    <Content Include="Scripts\esm\popper-utils.min.js.map" />
+    <Content Include="Scripts\esm\popper-utils.js.map" />
+    <Content Include="Scripts\bootstrap.min.js.map" />
+    <Content Include="Scripts\bootstrap.js.map" />
+    <Content Include="Scripts\bootstrap.bundle.min.js.map" />
+    <Content Include="Scripts\bootstrap.bundle.js.map" />
+    <Content Include="Content\bootstrap.min.css.map" />
+    <Content Include="Content\bootstrap.css.map" />
+    <Content Include="Content\bootstrap-reboot.min.css.map" />
+    <Content Include="Content\bootstrap-reboot.css.map" />
+    <Content Include="Content\bootstrap-grid.min.css.map" />
+    <Content Include="Content\bootstrap-grid.css.map" />
     <Content Include="assets\css\breadcrumb.css.map" />
     <Content Include="assets\css\style.css.map" />
     <Content Include="assets\css\_button.css.map" />
@@ -772,31 +797,14 @@
     <Content Include="assets\vendors\linericon\fonts\Linearicons-Free.woff" />
     <Content Include="assets\vendors\linericon\fonts\Linearicons-Free.woff2" />
     <Content Include="Areas\Admin\Views\web.config" />
+    <Content Include="Areas\Admin\Views\_ViewStart.cshtml" />
     <Content Include="Areas\Admin\Views\Shared\_AdminLayout.cshtml" />
-    <Content Include="Scripts\bootstrap.bundle.js" />
-    <Content Include="Scripts\bootstrap.bundle.min.js" />
-    <Content Include="Scripts\bootstrap.js" />
-    <Content Include="Scripts\bootstrap.min.js" />
-    <Content Include="Scripts\esm\popper-utils.js" />
-    <Content Include="Scripts\esm\popper-utils.min.js" />
-    <Content Include="Scripts\esm\popper.js" />
-    <Content Include="Scripts\esm\popper.min.js" />
-    <Content Include="Scripts\index.js.flow" />
-    <Content Include="Scripts\esm\popper.min.js.map" />
-    <Content Include="Scripts\esm\popper.js.map" />
-    <Content Include="Scripts\esm\popper-utils.min.js.map" />
-    <Content Include="Scripts\esm\popper-utils.js.map" />
-    <Content Include="Scripts\bootstrap.min.js.map" />
-    <Content Include="Scripts\bootstrap.js.map" />
-    <Content Include="Scripts\bootstrap.bundle.min.js.map" />
-    <Content Include="Scripts\bootstrap.bundle.js.map" />
-    <Content Include="Content\bootstrap.min.css.map" />
-    <Content Include="Content\bootstrap.css.map" />
-    <Content Include="Content\bootstrap-reboot.min.css.map" />
-    <Content Include="Content\bootstrap-reboot.css.map" />
-    <Content Include="Content\bootstrap-grid.min.css.map" />
-    <Content Include="Content\bootstrap-grid.css.map" />
-    <Content Include="Areas\Admin\Views\Shared\_ViewStart.cshtml" />
+    <Content Include="Areas\Admin\Views\CategoryManagement\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\CategoryManagement\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\CategoryManagement\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\TagManagement\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\TagManagement\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\TagManagement\Index.cshtml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
@@ -893,13 +901,6 @@
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
-    <Content Include="Views\Posts\Details.cshtml" />
-    <Content Include="Views\Posts\Index.cshtml" />
-    <Content Include="Views\Posts\_ListPosts.cshtml" />
-    <Content Include="Views\Shared\_About.cshtml" />
-    <Content Include="Views\Shared\_Footer.cshtml" />
-    <Content Include="Views\Shared\_PostOverview.cshtml" />
-    <Content Include="Views\Tags\_PopularTags.cshtml" />
     <Content Include="Scripts\umd\popper.min.js.map" />
     <Content Include="Scripts\umd\popper.js.map" />
     <Content Include="Scripts\umd\popper.js.flow" />
@@ -910,10 +911,16 @@
     <Content Include="Scripts\popper.js.map" />
     <Content Include="Scripts\popper-utils.min.js.map" />
     <Content Include="Scripts\popper-utils.js.map" />
+    <Content Include="Views\Home\_AboutMe.cshtml" />
+    <Content Include="Views\Shared\_PostOverview.cshtml" />
+    <Content Include="Views\Shared\_Footer.cshtml" />
+    <Content Include="Views\Posts\Index.cshtml" />
+    <Content Include="Views\Posts\Details.cshtml" />
+    <Content Include="Views\Posts\_ListPosts.cshtml" />
+    <Content Include="Views\Tags\_PopularTags.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Areas\Admin\Controllers\" />
     <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
@@ -927,7 +934,7 @@
       <Name>FA.JustBlog.Common</Name>
     </ProjectReference>
     <ProjectReference Include="..\FA.JustBlog.Data\FA.JustBlog.Data.csproj">
-      <Project>{80FE9353-553B-4F9C-A940-478EFF3216A9}</Project>
+      <Project>{80fe9353-553b-4f9c-a940-478eff3216a9}</Project>
       <Name>FA.JustBlog.Data</Name>
     </ProjectReference>
     <ProjectReference Include="..\FA.JustBlog.Models\FA.JustBlog.Models.csproj">
@@ -935,7 +942,7 @@
       <Name>FA.JustBlog.Models</Name>
     </ProjectReference>
     <ProjectReference Include="..\FA.JustBlog.Services\FA.JustBlog.Services.csproj">
-      <Project>{D5A5AF4B-6C2F-4E97-8BE2-86A74EE8B1D5}</Project>
+      <Project>{d5a5af4b-6c2f-4e97-8be2-86a74ee8b1d5}</Project>
       <Name>FA.JustBlog.Services</Name>
     </ProjectReference>
   </ItemGroup>
@@ -962,9 +969,9 @@
         <WebProjectProperties>
           <UseIIS>True</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
-          <DevelopmentServerPort>53946</DevelopmentServerPort>
+          <DevelopmentServerPort>60209</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>https://localhost:44381/</IISUrl>
+          <IISUrl>https://localhost:44349/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>

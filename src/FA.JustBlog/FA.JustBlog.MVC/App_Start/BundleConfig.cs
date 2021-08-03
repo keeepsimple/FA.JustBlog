@@ -1,7 +1,7 @@
 ﻿using System.Web;
 using System.Web.Optimization;
 
-namespace FA.JustBlog.WebMVC
+namespace FA.JustBlog.MVC
 {
     public class BundleConfig
     {

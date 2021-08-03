@@ -11,7 +11,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FA.JustBlog.Services", "FA.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FA.JustBlog.Common", "FA.JustBlog.Common\FA.JustBlog.Common.csproj", "{5CEB21CD-BDD6-4DB6-9985-DB86B0CD26C2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FA.JustBlog.WebMVC", "FA.JustBlog.WebMVC\FA.JustBlog.WebMVC.csproj", "{5FA85ABE-08DE-46A3-85FB-C5AFC623481A}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FA.JustBlog.MVC", "FA.JustBlog.MVC\FA.JustBlog.MVC.csproj", "{DF8F0FB8-42A3-4CD4-B580-AB1A2564C504}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -35,10 +35,10 @@ Global
 		{5CEB21CD-BDD6-4DB6-9985-DB86B0CD26C2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5CEB21CD-BDD6-4DB6-9985-DB86B0CD26C2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5CEB21CD-BDD6-4DB6-9985-DB86B0CD26C2}.Release|Any CPU.Build.0 = Release|Any CPU
-		{5FA85ABE-08DE-46A3-85FB-C5AFC623481A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{5FA85ABE-08DE-46A3-85FB-C5AFC623481A}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{5FA85ABE-08DE-46A3-85FB-C5AFC623481A}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{5FA85ABE-08DE-46A3-85FB-C5AFC623481A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DF8F0FB8-42A3-4CD4-B580-AB1A2564C504}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DF8F0FB8-42A3-4CD4-B580-AB1A2564C504}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DF8F0FB8-42A3-4CD4-B580-AB1A2564C504}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DF8F0FB8-42A3-4CD4-B580-AB1A2564C504}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

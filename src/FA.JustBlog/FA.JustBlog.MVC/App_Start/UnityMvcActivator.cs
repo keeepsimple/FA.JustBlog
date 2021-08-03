@@ -3,10 +3,10 @@ using System.Web.Mvc;
 
 using Unity.AspNet.Mvc;
 
-[assembly: WebActivatorEx.PreApplicationStartMethod(typeof(FA.JustBlog.WebMVC.UnityMvcActivator), nameof(FA.JustBlog.WebMVC.UnityMvcActivator.Start))]
-[assembly: WebActivatorEx.ApplicationShutdownMethod(typeof(FA.JustBlog.WebMVC.UnityMvcActivator), nameof(FA.JustBlog.WebMVC.UnityMvcActivator.Shutdown))]
+[assembly: WebActivatorEx.PreApplicationStartMethod(typeof(FA.JustBlog.MVC.UnityMvcActivator), nameof(FA.JustBlog.MVC.UnityMvcActivator.Start))]
+[assembly: WebActivatorEx.ApplicationShutdownMethod(typeof(FA.JustBlog.MVC.UnityMvcActivator), nameof(FA.JustBlog.MVC.UnityMvcActivator.Shutdown))]
 
-namespace FA.JustBlog.WebMVC
+namespace FA.JustBlog.MVC
 {
     /// <summary>
     /// Provides the bootstrapping for integrating Unity with ASP.NET MVC.
