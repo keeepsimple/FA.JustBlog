@@ -21,11 +21,13 @@ namespace FA.JustBlog.MVC.Areas.Admin.Controllers
         }
 
         // GET: Admin/TagManagerment
-        public async Task<ActionResult> Index(string sortOrder, string currentFilter, string searchString, int? pageIndex = 1, int pageSize = 3)
+        public async Task<ActionResult> Index(string sortOrder, string currentFilter, string searchString,
+            int? pageIndex = 1, int pageSize = 2)
         {
             ViewData["CurrentPageSize"] = pageSize;
-            ViewData["CurrentSortOrder"] = sortOrder;
+            ViewData["CurrentSort"] = sortOrder;
             ViewData["NameSortParm"] = string.IsNullOrEmpty(sortOrder) ? "name_desc" : "";
+            ViewData["UrlSlugSortParm"] = sortOrder == "UrlSlug" ? "urlSlug_desc" : "UrlSlug";
             ViewData["TotalPostsSortParm"] = sortOrder == "TotalPosts" ? "totalPosts_desc" : "TotalPosts";
             ViewData["InsertedAtSortParm"] = sortOrder == "InsertedAt" ? "insertedAt_desc" : "InsertedAt";
             ViewData["UpdatedAtSortParm"] = sortOrder == "UpdatedAt" ? "updatedAt_desc" : "UpdatedAt";
@@ -38,30 +40,55 @@ namespace FA.JustBlog.MVC.Areas.Admin.Controllers
             {
                 searchString = currentFilter;
             }
+
             ViewData["CurrentFilter"] = searchString;
 
             Expression<Func<Tag, bool>> filter = null;
-            if (string.IsNullOrEmpty(searchString))
+
+            if (!string.IsNullOrEmpty(searchString))
             {
                 filter = c => c.Name.Contains(searchString);
             }
 
             Func<IQueryable<Tag>, IOrderedQueryable<Tag>> orderBy = null;
+
             switch (sortOrder)
             {
-                case "name_desc": orderBy = x => x.OrderByDescending(c => c.Name); break;
-                case "InsertedAt": orderBy = x => x.OrderBy(c => c.Name); break;
-                case "insertedAt_desc": orderBy = x => x.OrderByDescending(c => c.Name); break;
-                case "TotalPosts": orderBy = q => q.OrderBy(c => c.Posts.Count); break;
-                case "totalPosts_desc": orderBy = q => q.OrderByDescending(c => c.Posts.Count); break;
-                case "UpdatedAt": orderBy = q => q.OrderBy(c => c.UpdatedAt); break;
-                case "updatedAt_desc": orderBy = q => q.OrderByDescending(c => c.UpdatedAt); break;
-                default: orderBy = x => x.OrderBy(c => c.Name); break;
+                case "name_desc":
+                    orderBy = q => q.OrderByDescending(c => c.Name);
+                    break;
+                case "UrlSlug":
+                    orderBy = q => q.OrderBy(c => c.UrlSlug);
+                    break;
+                case "urlSlug_desc":
+                    orderBy = q => q.OrderByDescending(c => c.UrlSlug);
+                    break;
+                case "TotalPosts":
+                    orderBy = q => q.OrderBy(c => c.Posts.Count);
+                    break;
+                case "totalPosts_desc":
+                    orderBy = q => q.OrderByDescending(c => c.Posts.Count);
+                    break;
+                case "InsertedAt":
+                    orderBy = q => q.OrderBy(c => c.InsertedAt);
+                    break;
+                case "insertedAt_desc":
+                    orderBy = q => q.OrderByDescending(c => c.InsertedAt);
+                    break;
+                case "UpdatedAt":
+                    orderBy = q => q.OrderBy(c => c.UpdatedAt);
+                    break;
+                case "updatedAt_desc":
+                    orderBy = q => q.OrderByDescending(c => c.UpdatedAt);
+                    break;
+                default:
+                    orderBy = q => q.OrderBy(c => c.Name);
+                    break;
             }
 
-            var categories = await _tagServices.GetAsync(orderBy: orderBy, filter: filter, pageIndex: pageIndex ?? 1, pageSize: pageSize);
+            var tags = await _tagServices.GetAsync(filter: filter, orderBy: orderBy, pageIndex: pageIndex ?? 1, pageSize: pageSize);
 
-            return View(categories);
+            return View(tags);
         }
 
         // GET: Admin/TagManagerment/Create

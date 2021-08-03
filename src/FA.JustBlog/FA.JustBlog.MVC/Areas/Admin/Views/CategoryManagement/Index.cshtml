@@ -34,7 +34,7 @@ else
                 <a href="@Url.Action("Index", "CategoryManagement", new { sortOrder = ViewData["NameSortParm"], currentFilter = ViewData["CurrentFilter"] })">Name</a>
             </th>
             <th class="col-md-2">
-                Url Slug
+                <a href="@Url.Action("Index", "CategoryManagement", new { sortOrder = ViewData["UrlSlugSortParm"], currentFilter = ViewData["CurrentFilter"] })">Url Slug</a>
             </th>
             <th class="col-md-2">
                 <a href="@Url.Action("Index", "CategoryManagement", new { sortOrder = ViewData["TotalPostsSortParm"], currentFilter = ViewData["CurrentFilter"] })">Total Posts</a>
