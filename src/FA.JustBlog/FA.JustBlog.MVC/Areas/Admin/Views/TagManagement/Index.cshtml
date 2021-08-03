@@ -52,7 +52,7 @@ else
         {
             <tr class="d-flex">
                 <td class="col-md-2">
-                    <a href="@Url.Action("Details", new { id = Tag.Id})">
+                    <a href="@Url.Action("Edit", new { id = Tag.Id})">
                         @Tag.Name
                     </a>
                 </td>
@@ -71,7 +71,7 @@ else
                 <td class="col-md-2">
                     <form action="@Url.Action("Delete", "TagManagement", new{ id = Tag.Id })" method="post">
                         <a href="@Url.Action("Edit", "TagManagement", new { id = Tag.Id})" class="btn btn-primary"><i class="fas fa-edit"></i></a>
-                        <button type="submit" onclick="return confirm('Are you sure to delete this Tag?');" class="btn btn-danger"><i class="fas fa-edit"></i></button>
+                        <button type="submit" onclick="return confirm('Are you sure to delete this Tag?');" class="btn btn-danger"><i class="fas fa-trash"></i></button>
                     </form>
                 </td>
             </tr>
