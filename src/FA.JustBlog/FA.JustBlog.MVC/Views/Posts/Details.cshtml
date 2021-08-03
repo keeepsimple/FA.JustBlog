@@ -1,0 +1,18 @@
+﻿@model Post
+@{
+    ViewBag.Title = "Details";
+}
+
+<div class="post-detail">
+    <img src="../assets/img/home-blog/@Model.ImageUrl" class="img-fluid" alt="@Model.Title">
+    <h1>@Model.Title</h1>
+    <div class="short-description">
+        @Model.ShortDescription
+    </div>
+    <div class="post-content">
+        <p>@Model.PostContent</p>
+    </div>
+    <div class="publish-date">
+        <p>Published: @Model.PublishedDate.ToShortDateString()</p>
+    </div>
+</div>
