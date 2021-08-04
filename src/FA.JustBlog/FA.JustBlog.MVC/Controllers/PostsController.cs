@@ -30,10 +30,14 @@ namespace FA.JustBlog.MVC.Controllers
             return View(posts);
         }
 
-        [HttpGet]
         public async Task<ActionResult> Details(Guid id)
         {
             var post = await _postServices.GetByIdAsync(id);
+            if (post == null)
+            {
+                return HttpNotFound();
+            }
+            ViewBag.PostTitle = post.Title;
             return View(post);
         }
 

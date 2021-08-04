@@ -151,9 +151,11 @@
     <Compile Include="App_Start\UnityMvcActivator.cs" />
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
     <Compile Include="Areas\Admin\Controllers\CategoryManagementController.cs" />
+    <Compile Include="Areas\Admin\Controllers\PostManagementController.cs" />
     <Compile Include="Areas\Admin\Controllers\TagManagementController.cs" />
     <Compile Include="Areas\Admin\ViewModels\CategoryViewModel.cs" />
     <Compile Include="Areas\Admin\ViewModels\TagViewModel.cs" />
+    <Compile Include="Controllers\CategoriesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\PostsController.cs" />
     <Compile Include="Controllers\TagsController.cs" />
@@ -694,6 +696,7 @@
     <Content Include="assets\js\jquery.ajaxchimp.min.js" />
     <Content Include="assets\js\jquery.form.js" />
     <Content Include="assets\js\jquery.validate.min.js" />
+    <Content Include="assets\js\justblog.js" />
     <Content Include="assets\js\mail-script.js" />
     <Content Include="assets\js\popper.js" />
     <Content Include="assets\js\stellar.js" />
@@ -918,9 +921,12 @@
     <Content Include="Views\Posts\Details.cshtml" />
     <Content Include="Views\Posts\_ListPosts.cshtml" />
     <Content Include="Views\Tags\_PopularTags.cshtml" />
+    <Content Include="Views\Tags\Details.cshtml" />
+    <Content Include="Views\Categories\Details.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Areas\Admin\Views\PostManagement\" />
     <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>

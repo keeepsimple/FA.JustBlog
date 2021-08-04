@@ -3,7 +3,7 @@
 <h3>Popular Tags</h3>
 @foreach (var item in Model)
 {
-    <a href="#" class="badge rounded-pill bg-primary" style="text-decoration: none; color: white">
+    <a href="@Url.Action("Details", "Tags", new { id = item.Id})" class="badge rounded-pill bg-primary" style="text-decoration: none; color: white">
         @item.Name
     </a>
 }
