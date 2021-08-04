@@ -114,8 +114,16 @@ namespace FA.JustBlog.MVC.Areas.Admin.Controllers
                     UrlSlug = TagViewModel.UrlSlug,
                     Description = TagViewModel.Description
                 };
-                _tagServices.Add(tag);
-                return RedirectToAction("Index");
+                var result = _tagServices.Add(tag);
+                if (result > 0)
+                {
+                    TempData["Message"] = "Create successful";
+                    return RedirectToAction("Index");
+                }
+                else
+                {
+                    TempData["Message"] = "Create failed! Please try again";
+                }
             }
 
             return View(TagViewModel);

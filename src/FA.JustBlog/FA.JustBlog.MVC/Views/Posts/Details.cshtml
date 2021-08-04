@@ -1,10 +1,10 @@
 ﻿@model Post
 @{
-    ViewBag.Title = "Details";
+    ViewBag.Title = ViewBag.PostTitle;
 }
 
 <div class="post-detail">
-    <img src="../assets/img/home-blog/@Model.ImageUrl" class="img-fluid" alt="@Model.Title">
+    <img src="~/assets/img/home-blog/@Model.ImageUrl" class="img-fluid" alt="@Model.Title">
     <h1>@Model.Title</h1>
     <div class="short-description">
         @Model.ShortDescription

@@ -114,8 +114,16 @@ namespace FA.JustBlog.MVC.Areas.Admin.Controllers
                     UrlSlug = categoryViewModel.UrlSlug,
                     Description = categoryViewModel.Description
                 };
-                _categoryServices.Add(category);
-                return RedirectToAction("Index");
+                var result = _categoryServices.Add(category);
+                if (result > 0)
+                {
+                    TempData["Message"] = "Create successful";
+                    return RedirectToAction("Index");
+                }
+                else
+                {
+                    TempData["Message"] = "Create failed! Please try again";
+                }
             }
 
             return View(categoryViewModel);

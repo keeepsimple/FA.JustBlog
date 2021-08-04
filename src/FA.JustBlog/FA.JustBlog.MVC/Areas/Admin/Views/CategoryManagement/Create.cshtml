@@ -17,7 +17,7 @@
         <div class="form-group col-md-6">
             @Html.LabelFor(model => model.Name, htmlAttributes: new { @class = "control-label" })
             <div>
-                @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control", @onkeyup = "ConvertToSlug()" } })
                 @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -50,4 +50,5 @@
 @section scripts {
     <script src="~/Assets/js/ckeditor/ckeditor.js"></script>
     <script src="~/Assets/js/ckeditor/ckeditorconfig.js"></script>
+    <script src="~/Assets/js/justblog.js"></script>
 }
