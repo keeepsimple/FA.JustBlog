@@ -1,4 +1,5 @@
 ﻿using FA.JustBlog.Models.Common;
+using FA.JustBlog.MVC.ViewModels;
 using FA.JustBlog.Services;
 using System;
 using System.Linq;
@@ -11,20 +12,35 @@ namespace FA.JustBlog.MVC.Controllers
     public class HomeController : Controller
     {
         private readonly IPostServices _postServices;
+        private readonly ICategoryServices _categoryServices;
 
-        public HomeController(IPostServices postServices)
+        public HomeController(IPostServices postServices, ICategoryServices categoryServices)
         {
             _postServices = postServices;
+            _categoryServices = categoryServices;
         }
 
-        public async Task<ActionResult> Index(int? pageIndex = 1, int pageSize = 4)
+        public async Task<ActionResult> Index(int? pageIndex = 1, int pageSize = 3)
         {
             Expression<Func<Post, bool>> filter = null;
 
-            Func<IQueryable<Post>, IOrderedQueryable<Post>> orderBy = o => o.OrderByDescending(p => p.PublishedDate);
+            Func<IQueryable<Post>, IOrderedQueryable<Post>> orderBy = o => o.Where(x=>x.Published==true).OrderByDescending(p => p.PublishedDate);
             var newestPosts = await _postServices.GetAsync(filter: filter, orderBy: orderBy,
                 pageIndex: pageIndex ?? 1, pageSize: pageSize); 
             return View(newestPosts);
+        }
+
+        public ActionResult Menu()
+        {
+            var categories = _categoryServices.GetAll();
+            var popularCategories = categories.OrderByDescending(p => p.Posts.Count()).Take(2);
+            var remainCategories = categories.OrderByDescending(p => p.Posts.Count()).Skip(2);
+            var categoryMenuViewModel = new CategoryMenuViewModel()
+            {
+                PopularCategories = popularCategories,
+                RemainCategories = remainCategories
+            };
+            return PartialView("_Menu", categoryMenuViewModel);
         }
 
         public ActionResult About()

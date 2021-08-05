@@ -18,11 +18,11 @@ namespace FA.JustBlog.MVC.Controllers
         }
 
         // GET: Posts
-        //public async Task<ActionResult> Index(int? pageIndex = 1, int pageSize = 4)
+        //public async Task<ActionResult> Index(int? pageIndex = 1, int pageSize = 3)
         //{
         //    Expression<Func<Post, bool>> filter = null;
 
-        //    Func<IQueryable<Post>, IOrderedQueryable<Post>> orderBy = o => o.OrderBy(p => p.PublishedDate);
+        //    Func<IQueryable<Post>, IOrderedQueryable<Post>> orderBy = o => o.Where(x => x.Published == true).OrderBy(p => p.PublishedDate);
         //    var posts = await _postServices.GetAsync(filter: filter, orderBy: orderBy,
         //        pageIndex: pageIndex ?? 1, pageSize: pageSize);
         //    return View(posts);

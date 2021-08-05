@@ -1,0 +1,21 @@
+﻿@model CategoryMenuViewModel
+
+
+@foreach (var item in Model.PopularCategories)
+{
+    <li class="nav-item active">
+        @Html.ActionLink(item.Name, "Details", "Categories", new { area = "", id=item.Id }, new { @class = "nav-link" })
+    </li>
+}
+
+<li class="nav-item dropdown">
+    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        Remain Categories
+    </a>
+    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+        @foreach (var item in Model.RemainCategories)
+        {
+            <a class="dropdown-item" href="@Url.Action("Details", "Categories" , new { area = "", id=item.Id})">@item.Name</a>
+        }
+    </div>
+</li>
