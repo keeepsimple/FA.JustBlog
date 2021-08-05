@@ -1,4 +1,7 @@
-﻿using System;
+﻿using FA.JustBlog.Models.Common;
+using FA.JustBlog.MVC.Areas.Admin.ViewModels;
+using FA.JustBlog.Services;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
@@ -6,21 +9,21 @@ using System.Linq;
 using System.Linq.Expressions;
 using System.Net;
 using System.Threading.Tasks;
-using System.Web;
 using System.Web.Mvc;
-using FA.JustBlog.Data;
-using FA.JustBlog.Models.Common;
-using FA.JustBlog.Services;
 
 namespace FA.JustBlog.MVC.Areas.Admin.Controllers
 {
     public class PostManagementController : Controller
     {
         private readonly IPostServices _postServices;
+        private readonly ICategoryServices _categoryServices;
+        private readonly ITagServices _tagServices;
 
-        public PostManagementController(IPostServices postServices)
+        public PostManagementController(IPostServices postServices, ICategoryServices categoryServices, ITagServices tagServices)
         {
             _postServices = postServices;
+            _categoryServices = categoryServices;
+            _tagServices = tagServices;
         }
 
         // GET: Admin/PostManagement
@@ -108,68 +111,145 @@ namespace FA.JustBlog.MVC.Areas.Admin.Controllers
             return View(posts);
         }
 
-        // GET: Admin/PostManagement/Create
-        //public ActionResult Create()
-        //{
-        //    ViewBag.CategoryId = new SelectList(db.Categories, "Id", "Name");
-        //    return View();
-        //}
+        //GET: Admin/PostManagement/Create
+        public ActionResult Create()
+        {
+            ViewBag.CategoryId = new SelectList(_categoryServices.GetAll(), "Id", "Name");
+            var postViewModel = new PostViewModel();
+            postViewModel.Tags = _tagServices.GetAll().Select(t=> new SelectListItem { Value = t.Id.ToString(), Text = t.Name});
+            return View(postViewModel);
+        }
 
-        //// POST: Admin/PostManagement/Create
-        //// To protect from overposting attacks, enable the specific properties you want to bind to, for 
-        //// more details see https://go.microsoft.com/fwlink/?LinkId=317598.
-        //[HttpPost]
-        //[ValidateAntiForgeryToken]
-        //public ActionResult Create([Bind(Include = "Id,Title,ShortDescription,ImageUrl,PostContent,UrlSlug,Published,PublishedDate,CategoryId,ViewCount,RateCount,TotalRate,IsDeleted,InsertedAt,UpdatedAt")] Post post)
-        //{
-        //    if (ModelState.IsValid)
-        //    {
-        //        post.Id = Guid.NewGuid();
-        //        db.Posts.Add(post);
-        //        db.SaveChanges();
-        //        return RedirectToAction("Index");
-        //    }
+        // POST: Admin/PostManagement/Create
+        // To protect from overposting attacks, enable the specific properties you want to bind to, for 
+        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        [ValidateInput(false)]
+        public async Task<ActionResult> Create(PostViewModel postViewModel)
+        {
+            if (ModelState.IsValid)
+            {
+                var post = new Post
+                {
+                    Id = Guid.NewGuid(),
+                    Title = postViewModel.Title,
+                    UrlSlug = postViewModel.UrlSlug,
+                    ShortDescription = postViewModel.ShortDescription,
+                    ImageUrl = postViewModel.ImageUrl,
+                    PostContent = postViewModel.PostContent,
+                    Published = postViewModel.Published,
+                    CategoryId = postViewModel.CategoryId,
+                    ViewCount = postViewModel.ViewCount,
+                    RateCount = postViewModel.RateCount,
+                    TotalRate = postViewModel.TotalRate,
+                    Tags = await GetSelectedTagFromIds(postViewModel.SelectedTagIds)
+                };
+                var result = await _postServices.AddAsync(post);
+                return RedirectToAction("Index");
+            }
 
-        //    ViewBag.CategoryId = new SelectList(db.Categories, "Id", "Name", post.CategoryId);
-        //    return View(post);
-        //}
+            ViewBag.CategoryId = new SelectList(await _categoryServices.GetAllAsync(), "Id", "Name", postViewModel.CategoryId);
+            postViewModel.Tags = _tagServices.GetAll().Select(t=> new SelectListItem { Value = t.Id.ToString(), Text = t.Name});
+            return View(postViewModel);
+        }
 
-        //// GET: Admin/PostManagement/Edit/5
-        //public ActionResult Edit(Guid? id)
-        //{
-        //    if (id == null)
-        //    {
-        //        return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-        //    }
-        //    Post post = db.Posts.Find(id);
-        //    if (post == null)
-        //    {
-        //        return HttpNotFound();
-        //    }
-        //    ViewBag.CategoryId = new SelectList(db.Categories, "Id", "Name", post.CategoryId);
-        //    return View(post);
-        //}
+        private async Task<ICollection<Tag>> GetSelectedTagFromIds(IEnumerable<Guid> selectedTagIds)
+        {
+            var tags = new List<Tag>();
 
-        //// POST: Admin/PostManagement/Edit/5
-        //// To protect from overposting attacks, enable the specific properties you want to bind to, for 
-        //// more details see https://go.microsoft.com/fwlink/?LinkId=317598.
-        //[HttpPost]
-        //[ValidateAntiForgeryToken]
-        //public ActionResult Edit([Bind(Include = "Id,Title,ShortDescription,ImageUrl,PostContent,UrlSlug,Published,PublishedDate,CategoryId,ViewCount,RateCount,TotalRate,IsDeleted,InsertedAt,UpdatedAt")] Post post)
-        //{
-        //    if (ModelState.IsValid)
-        //    {
-        //        db.Entry(post).State = EntityState.Modified;
-        //        db.SaveChanges();
-        //        return RedirectToAction("Index");
-        //    }
-        //    ViewBag.CategoryId = new SelectList(db.Categories, "Id", "Name", post.CategoryId);
-        //    return View(post);
-        //}
+            var tagEntities = await _tagServices.GetAllAsync();
+
+            foreach (var item in tagEntities)
+            {
+                if (selectedTagIds.Any(x => x == item.Id))
+                {
+                    tags.Add(item);
+                }
+            }
+            return tags;
+        }
+
+        // GET: Admin/PostManagement/Edit/5
+        public async Task<ActionResult> Edit(Guid? id)
+        {
+            var post = await _postServices.GetByIdAsync((Guid)id);
+            var postViewModel = new PostViewModel()
+            {
+                Id = post.Id,
+                Title = post.Title,
+                UrlSlug = post.UrlSlug,
+                ShortDescription = post.ShortDescription,
+                ImageUrl = post.ImageUrl,
+                PostContent = post.PostContent,
+                Published = post.Published,
+                CategoryId = post.CategoryId,
+                ViewCount = post.ViewCount,
+                RateCount = post.RateCount,
+                TotalRate = post.TotalRate
+            };
+            ViewBag.CategoryId = new SelectList(_categoryServices.GetAll(), "Id", "Name", postViewModel.CategoryId);
+            postViewModel.Tags = _tagServices.GetAll().Select(t => new SelectListItem { Value = t.Id.ToString(), Text = t.Name });
+            ViewBag.TagList = _tagServices.GetAll();
+            return View(postViewModel);
+        }
+
+        // POST: Admin/PostManagement/Edit/5
+        // To protect from overposting attacks, enable the specific properties you want to bind to, for 
+        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        [ValidateInput(false)]
+        public async Task<ActionResult> Edit(PostViewModel postViewModel)
+        {
+            if (ModelState.IsValid)
+            {
+                var post = await _postServices.GetByIdAsync(postViewModel.Id);
+                if (post == null)
+                {
+                    return HttpNotFound();
+                }
+                post.Title = postViewModel.Title;
+                post.UrlSlug = postViewModel.UrlSlug;
+                post.ShortDescription = postViewModel.ShortDescription;
+                post.ImageUrl = postViewModel.ImageUrl;
+                post.PostContent = postViewModel.PostContent;
+                post.Published = postViewModel.Published;
+                post.CategoryId = postViewModel.CategoryId;
+                post.ViewCount = postViewModel.ViewCount;
+                post.RateCount = postViewModel.RateCount;
+                post.TotalRate = postViewModel.TotalRate;
+                await UpdateSelectedTagsFromIds(postViewModel.SelectedTagIds, post);
+                var result = await _postServices.UpdateAsync(post);
+                if (result)
+                {
+                    TempData["Message"] = "Update successful!";
+                }
+                else
+                {
+                    TempData["Message"] = "Update failed!";
+
+                }
+                return RedirectToAction("Index");
+            }
+            ViewBag.CategoryId = new SelectList(await _categoryServices.GetAllAsync(), "Id", "Name");
+            postViewModel.Tags = _tagServices.GetAll().Select(t => new SelectListItem { Value = t.Id.ToString(), Text = t.Name });
+            ViewBag.TagList = _tagServices.GetAll();
+            return View(postViewModel);
+        }
+
+        private async Task UpdateSelectedTagsFromIds(IEnumerable<Guid> selectedTagIds, Post post)
+        {
+            var tag = post.Tags;
+            foreach (var item in tag.ToList())
+            {
+                post.Tags.Remove(item);
+            }
+            post.Tags = await GetSelectedTagFromIds(selectedTagIds);
+        }
 
         // POST: Admin/PostManagement/Delete/5
         [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
         public async Task<ActionResult> Delete(Guid id)
         {
             var result = await _postServices.DeleteAsync(id);

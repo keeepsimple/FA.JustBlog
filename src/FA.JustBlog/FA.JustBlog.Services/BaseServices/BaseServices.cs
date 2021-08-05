@@ -29,7 +29,7 @@ namespace FA.JustBlog.Services.BaseServices
             return _unitOfWork.SaveChanges();
         }
 
-        public async Task<int> AddAsync(TEntity entity)
+        public virtual async Task<int> AddAsync(TEntity entity)
         {
             if (entity == null)
             {
@@ -88,14 +88,14 @@ namespace FA.JustBlog.Services.BaseServices
             return await _unitOfWork.SaveChangesAsync() > 0;
         }
 
-        public IEnumerable<TEntity> GetAll()
+        public IEnumerable<TEntity> GetAll(bool published = true)
         {
-            return _unitOfWork.GenericRepository<TEntity>().GetQuery().ToList();
+            return _unitOfWork.GenericRepository<TEntity>().GetQuery().Where(x=> x.IsDeleted == false).ToList();
         }
 
-        public async Task<IEnumerable<TEntity>> GetAllAsync()
+        public async Task<IEnumerable<TEntity>> GetAllAsync(bool published = true)
         {
-            return await _unitOfWork.GenericRepository<TEntity>().GetQuery().ToListAsync();
+            return await _unitOfWork.GenericRepository<TEntity>().GetQuery().Where(x => x.IsDeleted == false).ToListAsync();
         }
 
         public virtual async Task<Paginated<TEntity>> GetAsync(Expression<Func<TEntity, bool>> filter = null,

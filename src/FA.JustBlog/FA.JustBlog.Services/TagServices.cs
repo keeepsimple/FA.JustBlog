@@ -16,12 +16,12 @@ namespace FA.JustBlog.Services
 
         public async Task<IEnumerable<Tag>> GetPopularTagAsync(int size)
         {
-            return await _unitOfWork.TagRepository.GetQuery().OrderByDescending(t => t.Posts.Count).Take(size).ToListAsync();
+            return await _unitOfWork.TagRepository.GetQuery().Where(x => x.IsDeleted == false).OrderByDescending(t => t.Posts.Count).Take(size).ToListAsync();
         }
 
         public async Task<IEnumerable<Tag>> GetPopularTags(int size)
         {
-            return await _unitOfWork.TagRepository.GetQuery().OrderByDescending(t => t.Posts.Count).Take(size).ToListAsync();
+            return await _unitOfWork.TagRepository.GetQuery().Where(x => x.IsDeleted == false).OrderByDescending(t => t.Posts.Count).Take(size).ToListAsync();
         }
 
         public Tag GetTagByUrlSlug(string urlSlug)

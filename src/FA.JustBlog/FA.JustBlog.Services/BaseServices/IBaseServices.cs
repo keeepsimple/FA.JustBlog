@@ -29,9 +29,9 @@ namespace FA.JustBlog.Services.BaseServices
 
         Task<TEntity> GetByIdAsync(Guid id);
 
-        IEnumerable<TEntity> GetAll();
+        IEnumerable<TEntity> GetAll(bool published = true);
 
-        Task<IEnumerable<TEntity>> GetAllAsync();
+        Task<IEnumerable<TEntity>> GetAllAsync(bool published = true);
 
         /// <summary>
         /// Return entities with paging, filtering, ordering
