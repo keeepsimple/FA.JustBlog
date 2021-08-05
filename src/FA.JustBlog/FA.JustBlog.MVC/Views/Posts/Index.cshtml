@@ -16,10 +16,10 @@
             ViewBag.PageRange = 3;
         }
         <li class="page-item">
-            <a href="@Url.Action("Index", "Home", new { pageIndex = 1 })"
+            <a href="@Url.Action("Index", "Posts", new { pageIndex = 1 })"
                class="btn page-link @prevDisabled"><<</a>
         <li class="page-item">
-            <a href="@Url.Action("Index", "Home", new { pageIndex=(Model.PageIndex - 1 <= 0 ? 1 : Model.PageIndex - 1) })"
+            <a href="@Url.Action("Index", "Posts", new { pageIndex=(Model.PageIndex - 1 <= 0 ? 1 : Model.PageIndex - 1) })"
                class="btn page-link @prevDisabled"><</a>
         </li>
         @for (int i = 1; i <= Model.TotalPages; i++)
@@ -28,15 +28,15 @@
             {
                 <li class="page-item">
                     <a class="@(i==Model.PageIndex ? "Current" : "") page-link"
-                       href="@Url.Action("Index", "Home", new{ pageIndex=i })">@i</a>
+                       href="@Url.Action("Index", "Posts", new{ pageIndex=i })">@i</a>
                 </li>
             }
         }
         <li class="page-item">
-            <a href="@Url.Action("Index", "Home",new{pageIndex=(Model.PageIndex + 1 > Model.TotalPages ? Model.TotalPages : Model.PageIndex + 1)})"
+            <a href="@Url.Action("Index", "Posts",new{pageIndex=(Model.PageIndex + 1 > Model.TotalPages ? Model.TotalPages : Model.PageIndex + 1)})"
                class="btn page-link @nextDisabled">></a>
         <li class="page-item">
-            <a href="@Url.Action("Index", "Home", new{pageIndex=(Model.TotalPages)})"
+            <a href="@Url.Action("Index", "Posts", new{pageIndex=(Model.TotalPages)})"
                class="btn page-link @nextDisabled">>></a>
     </ul>
 </nav>

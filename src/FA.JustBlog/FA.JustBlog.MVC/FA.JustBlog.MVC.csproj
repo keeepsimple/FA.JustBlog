@@ -168,6 +168,7 @@
   <ItemGroup>
     <Content Include="assets\css\bootstrap.css" />
     <Content Include="assets\css\breadcrumb.css" />
+    <Content Include="assets\css\customize.css" />
     <Content Include="assets\css\font-awesome.min.css" />
     <Content Include="assets\css\responsive.css" />
     <Content Include="assets\css\style.css" />

@@ -30,16 +30,16 @@
 else
 {
     <table class="table table-condensed table-bordered">
-        <tr class="d-flex">
+        <tr class="d-flex center-title">
             <th class="col-md-2">
                 <a href="@Url.Action("Index", "PostManagement", new { sortOrder = ViewData["TitleSortParm"], currentFilter = ViewData["CurrentFilter"] })">Title</a>
             </th>
-            <th class="col-md-1">
+            <th class="col-md-2">
                 <a href="@Url.Action("Index", "PostManagement", new { sortOrder = ViewData["UrlSlugSortParm"], currentFilter = ViewData["CurrentFilter"] })">Url Slug</a>
             </th>
-            <th class="col-md-1">
+            @*<th class="col-md-1">
                 <a href="@Url.Action("Index", "PostManagement", new { sortOrder = ViewData["ViewsCountSortParm"], currentFilter = ViewData["CurrentFilter"] })">Views Count</a>
-            </th>
+            </th>*@
             @*<th class="col-md-2">
                 <a href="@Url.Action("Index", "PostManagement", new { sortOrder = ViewData["RateSortParm"], currentFilter = ViewData["CurrentFilter"] })">Rate</a>
             </th>*@
@@ -57,18 +57,18 @@ else
 
         @foreach (var post in Model)
         {
-            <tr class="d-flex">
+            <tr class="d-flex center-title">
                 <td class="col-md-2">
                     <a href="@Url.Action("Edit", new { id = post.Id})">
                         @post.Title
                     </a>
                 </td>
-                <td class="col-md-1">
+                <td class="col-md-2">
                     @post.UrlSlug
                 </td>
-                <td class="col-md-1">
+                @*<td class="col-md-1">
                     @post.ViewCount
-                </td>
+                </td>*@
                 @*<td class="col-md-2">
                     @post.Rate
                 </td>*@

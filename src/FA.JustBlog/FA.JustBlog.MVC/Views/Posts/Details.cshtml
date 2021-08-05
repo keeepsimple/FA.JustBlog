@@ -6,11 +6,19 @@
 <div class="post-detail">
     <img src="~/assets/img/home-blog/@Model.ImageUrl" class="img-fluid" alt="@Model.Title">
     <h1>@Model.Title</h1>
+    <div class="tags">
+        @foreach (var item in Model.Tags)
+        {
+            <a href="@Url.Action("Details", "Tags", new { id = item.Id})" class="badge rounded-pill bg-primary" style="text-decoration: none; color: white">
+                @item.Name
+            </a>
+        }
+    </div>
     <div class="short-description">
         @Model.ShortDescription
     </div>
     <div class="post-content">
-        <p>@Model.PostContent</p>
+        <p>@Html.Raw(Model.PostContent)</p>
     </div>
     <div class="publish-date">
         <p>Published: @Model.PublishedDate.ToShortDateString()</p>
