@@ -30,7 +30,7 @@
 else
 {
     <table class="table table-condensed table-bordered">
-        <tr class="d-flex">
+        <tr class="d-flex center-title">
             <th class="col-md-2">
                 <a href="@Url.Action("Index", "TagManagement", new { sortOrder = ViewData["NameSortParm"], currentFilter = ViewData["CurrentFilter"] })">Name</a>
             </th>
@@ -51,7 +51,7 @@ else
 
         @foreach (var Tag in Model)
         {
-            <tr class="d-flex">
+            <tr class="d-flex center-title">
                 <td class="col-md-2">
                     <a href="@Url.Action("Edit", new { id = Tag.Id})">
                         @Tag.Name
