@@ -24,14 +24,15 @@
                 <li class="nav-item active">
                     @Html.ActionLink("Home", "Index", "Home", new { area = "" }, new { @class = "nav-link" })
                 </li>
+                @Html.Action("Menu", "Home")
+                <li class="nav-item active">
+                    @Html.ActionLink("Post", "Index", "Posts", new { area = "" }, new { @class = "nav-link" })
+                </li>
                 <li class="nav-item active">
                     @Html.ActionLink("About", "About", "Home", new { area = "" }, new { @class = "nav-link" })
                 </li>
                 <li class="nav-item active">
                     @Html.ActionLink("Contact", "Contact", "Home", new { area = "" }, new { @class = "nav-link" })
-                </li>
-                <li class="nav-item active">
-                    @Html.ActionLink("Post", "Index", "Posts", new { area = "" }, new { @class = "nav-link" })
                 </li>
 
                 <li class="nav-item dropdown">
@@ -63,9 +64,9 @@
                 <hr />
                 @Html.Action("LastestPosts", "Posts")
                 <hr />
-                @Html.Action("PopularTags", "Tags")
+                @Html.Action("MostViewedPosts", "Posts")
                 <hr />
-                @*@Html.Action("MostViewedPosts", "Posts")*@
+                @Html.Action("PopularTags", "Tags")
             </div>
         </div>
         <hr />

@@ -88,14 +88,14 @@ namespace FA.JustBlog.Services.BaseServices
             return await _unitOfWork.SaveChangesAsync() > 0;
         }
 
-        public IEnumerable<TEntity> GetAll(bool published = true)
+        public IEnumerable<TEntity> GetAll()
         {
-            return _unitOfWork.GenericRepository<TEntity>().GetQuery().Where(x=> x.IsDeleted == false).ToList();
+            return _unitOfWork.GenericRepository<TEntity>().GetQuery().ToList();
         }
 
-        public async Task<IEnumerable<TEntity>> GetAllAsync(bool published = true)
+        public async Task<IEnumerable<TEntity>> GetAllAsync()
         {
-            return await _unitOfWork.GenericRepository<TEntity>().GetQuery().Where(x => x.IsDeleted == false).ToListAsync();
+            return await _unitOfWork.GenericRepository<TEntity>().GetQuery().ToListAsync();
         }
 
         public virtual async Task<Paginated<TEntity>> GetAsync(Expression<Func<TEntity, bool>> filter = null,
