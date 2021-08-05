@@ -5,6 +5,7 @@ using FA.JustBlog.Services;
 using System;
 
 using Unity;
+using FA.JustBlog.Data;
 
 namespace FA.JustBlog.MVC
 {
@@ -45,6 +46,7 @@ namespace FA.JustBlog.MVC
             // container.LoadConfiguration();
 
             // TODO: Register your type's mappings here.
+            container.RegisterSingleton<JustBlogContext, JustBlogContext>();
             container.RegisterType<IUnitOfWork, UnitOfWork>();
             container.RegisterType<IGenericRepository<Category>, GenericRepository<Category>>();
             container.RegisterType<IGenericRepository<Tag>, GenericRepository<Tag>>();

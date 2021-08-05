@@ -10,7 +10,7 @@ namespace FA.JustBlog.Services
     {
         Task<IEnumerable<Post>> GetPublisedPostsAsync(bool published = true);
 
-        Task<IEnumerable<Post>> GetLatestPostAsync(int size);
+        Task<IEnumerable<Post>> GetLatestPostAsync(int size, bool published = true);
 
         Task<IEnumerable<Post>> GetPostsByMonthAsync(DateTime monthYear);
 

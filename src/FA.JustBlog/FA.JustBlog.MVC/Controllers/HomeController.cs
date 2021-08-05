@@ -1,9 +1,9 @@
-﻿using FA.JustBlog.Services;
+﻿using FA.JustBlog.Models.Common;
+using FA.JustBlog.Services;
 using System;
-using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Threading.Tasks;
-using System.Web;
 using System.Web.Mvc;
 
 namespace FA.JustBlog.MVC.Controllers
@@ -17,9 +17,13 @@ namespace FA.JustBlog.MVC.Controllers
             _postServices = postServices;
         }
 
-        public async Task<ActionResult> Index()
+        public async Task<ActionResult> Index(int? pageIndex = 1, int pageSize = 4)
         {
-            var posts = await _postServices.GetAllAsync();
+            Expression<Func<Post, bool>> filter = null;
+
+            Func<IQueryable<Post>, IOrderedQueryable<Post>> orderBy = o => o.OrderBy(p => p.InsertedAt);
+            var posts = await _postServices.GetAsync(filter: filter, orderBy: orderBy,
+                pageIndex: pageIndex ?? 1, pageSize: pageSize);
             return View(posts);
         }
 
