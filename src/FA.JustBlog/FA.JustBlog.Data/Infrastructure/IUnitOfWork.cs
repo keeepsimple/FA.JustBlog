@@ -24,6 +24,8 @@ namespace FA.JustBlog.Data.Infrastructure
 
         IGenericRepository<Tag> TagRepository { get; }
 
+        IGenericRepository<Comment> CommentRepository { get; }
+
         #endregion
 
     }

@@ -12,6 +12,8 @@ namespace FA.JustBlog.Services
 
         Task<IEnumerable<Post>> GetLatestPostAsync(int size, bool published = true);
 
+        IEnumerable<Post> GetLatestPost(int size, bool published = true);
+
         Task<IEnumerable<Post>> GetPostsByMonthAsync(DateTime monthYear);
 
         Task<int> CountPostsForCategoryAsync(string category);
@@ -26,7 +28,7 @@ namespace FA.JustBlog.Services
 
         Task<IEnumerable<Post>> GetPostsByTagAsync(Guid tagId);
 
-        Task<IEnumerable<Post>> GetMostViewedPost(int size);
+        Task<IEnumerable<Post>> GetMostViewedPostAsync(int size);
 
         Task<IEnumerable<Post>> GetHighestPosts(int size);
     }

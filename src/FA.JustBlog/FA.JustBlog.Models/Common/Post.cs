@@ -48,5 +48,7 @@ namespace FA.JustBlog.Models.Common
         public int TotalRate { get; set; }
 
         public decimal Rate { get => TotalRate / RateCount; }
+
+        public virtual ICollection<Comment> Comments { get; set; }
     }
 }

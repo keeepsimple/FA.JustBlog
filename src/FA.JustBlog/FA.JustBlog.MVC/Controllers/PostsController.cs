@@ -18,14 +18,20 @@ namespace FA.JustBlog.MVC.Controllers
         }
 
         // GET: Posts
-        public async Task<ActionResult> Index(int? pageIndex = 1, int pageSize = 4)
-        {
-            Expression<Func<Post, bool>> filter = null;
+        //public async Task<ActionResult> Index(int? pageIndex = 1, int pageSize = 4)
+        //{
+        //    Expression<Func<Post, bool>> filter = null;
 
-            Func<IQueryable<Post>, IOrderedQueryable<Post>> orderBy = o => o.OrderBy(p => p.PublishedDate);
-            var posts = await _postServices.GetAsync(filter: filter, orderBy: orderBy,
-                pageIndex: pageIndex ?? 1, pageSize: pageSize);
-            return View(posts);
+        //    Func<IQueryable<Post>, IOrderedQueryable<Post>> orderBy = o => o.OrderBy(p => p.PublishedDate);
+        //    var posts = await _postServices.GetAsync(filter: filter, orderBy: orderBy,
+        //        pageIndex: pageIndex ?? 1, pageSize: pageSize);
+        //    return View(posts);
+        //}
+
+        public async Task<ActionResult> Index()
+        {
+            var allPost = await _postServices.GetAllAsync();
+            return View(allPost);
         }
 
         public async Task<ActionResult> Details(Guid id)
@@ -42,13 +48,22 @@ namespace FA.JustBlog.MVC.Controllers
         public ActionResult LastestPosts()
         {
             var lastestPosts = Task.Run(() => _postServices.GetLatestPostAsync(5)).Result;
+            ViewBag.PartialViewTitle = "Lastest Posts";
             return PartialView("_ListPosts", lastestPosts);
         }
 
-        public async Task<ActionResult> MostViewedPosts()
+        public ActionResult MostViewedPosts()
         {
-            var mostViewedPosts = await _postServices.GetMostViewedPost(5);
+            var mostViewedPosts = Task.Run(() => _postServices.GetMostViewedPostAsync(5)).Result;
+            ViewBag.PartialViewTitle = "Most View Posts";
             return PartialView("_ListPosts", mostViewedPosts);
         }
+
+        //public ActionResult HighestPosts()
+        //{
+        //    var lastestPosts = Task.Run(() => _postServices.GetHighestPosts(5)).Result;
+        //    ViewBag.PartialViewTitle = "Highest Posts";
+        //    return PartialView("_ListPost", lastestPosts);
+        //}
     }
 }
