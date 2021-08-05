@@ -69,6 +69,10 @@
     <Compile Include="Migrations\202107300001566_UpdatePostModel.designer.cs">
       <DependentUpon>202107300001566_UpdatePostModel.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202108051528178_AddComment.cs" />
+    <Compile Include="Migrations\202108051528178_AddComment.designer.cs">
+      <DependentUpon>202108051528178_AddComment.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -91,6 +95,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202107300001566_UpdatePostModel.resx">
       <DependentUpon>202107300001566_UpdatePostModel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202108051528178_AddComment.resx">
+      <DependentUpon>202108051528178_AddComment.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -19,6 +19,8 @@ namespace FA.JustBlog.Data
 
         public DbSet<Tag> Tags { get; set; }
 
+        public DbSet<Comment> Comments { get; set; }
+
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Post>()

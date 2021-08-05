@@ -22,9 +22,9 @@ namespace FA.JustBlog.MVC.Controllers
             Expression<Func<Post, bool>> filter = null;
 
             Func<IQueryable<Post>, IOrderedQueryable<Post>> orderBy = o => o.OrderByDescending(p => p.PublishedDate);
-            var posts = await _postServices.GetAsync(filter: filter, orderBy: orderBy,
-                pageIndex: pageIndex ?? 1, pageSize: pageSize);
-            return View(posts);
+            var newestPosts = await _postServices.GetAsync(filter: filter, orderBy: orderBy,
+                pageIndex: pageIndex ?? 1, pageSize: pageSize); 
+            return View(newestPosts);
         }
 
         public ActionResult About()

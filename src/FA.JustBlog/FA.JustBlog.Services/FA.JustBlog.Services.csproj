@@ -54,7 +54,9 @@
     <Compile Include="BaseServices\BaseServices.cs" />
     <Compile Include="BaseServices\IBaseServices.cs" />
     <Compile Include="CategoryServices.cs" />
+    <Compile Include="CommentServices.cs" />
     <Compile Include="ICategoryServices.cs" />
+    <Compile Include="ICommentServices.cs" />
     <Compile Include="IPostServices.cs" />
     <Compile Include="ITagServices.cs" />
     <Compile Include="PostServices.cs" />

@@ -54,7 +54,13 @@ namespace FA.JustBlog.Services
                 .OrderByDescending(x => x.PublishedDate).Take(size).ToListAsync();
         }
 
-        public async Task<IEnumerable<Post>> GetMostViewedPost(int size)
+        public IEnumerable<Post> GetLatestPost(int size, bool published = true)
+        {
+            return _unitOfWork.PostRepository.GetQuery().Where(x => x.IsDeleted == false)
+                .OrderByDescending(x => x.PublishedDate).Take(size).ToList();
+        }
+
+        public async Task<IEnumerable<Post>> GetMostViewedPostAsync(int size)
         {
             return await _unitOfWork.PostRepository.GetQuery().OrderByDescending(x=>x.ViewCount).Take(size).ToListAsync();
         }

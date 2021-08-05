@@ -28,6 +28,10 @@ namespace FA.JustBlog.Data.Infrastructure
 
         public IGenericRepository<Tag> TagRepository => _tagRepository ?? new GenericRepository<Tag>(_dbContext);
 
+        private IGenericRepository<Comment> _commentRepository;
+
+        public IGenericRepository<Comment> CommentRepository => _commentRepository ?? new GenericRepository<Comment>(_dbContext);
+
         #region Method
 
         public void Dispose()
