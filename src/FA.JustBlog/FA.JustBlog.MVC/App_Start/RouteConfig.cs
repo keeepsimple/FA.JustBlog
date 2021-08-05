@@ -18,6 +18,13 @@ namespace FA.JustBlog.MVC
                 url: "{controller}/{action}/{id}",
                 defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
             );
+
+            //routes.MapRoute(
+            //    name: "Posts",
+            //    url: "{Posts}/{year}/{month}/{title}",
+            //    new { controller = "Posts", action = "Details"},
+            //    new {year = @"\d{4}", month = @"\d{2}"}
+            //    );
         }
     }
 }
