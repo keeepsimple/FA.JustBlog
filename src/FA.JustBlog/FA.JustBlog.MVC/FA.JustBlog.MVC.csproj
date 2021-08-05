@@ -808,6 +808,9 @@
     <Content Include="Areas\Admin\Views\TagManagement\Create.cshtml" />
     <Content Include="Areas\Admin\Views\TagManagement\Edit.cshtml" />
     <Content Include="Areas\Admin\Views\TagManagement\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\PostManagement\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\PostManagement\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\PostManagement\Index.cshtml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
@@ -926,7 +929,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Areas\Admin\Views\PostManagement\" />
     <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
