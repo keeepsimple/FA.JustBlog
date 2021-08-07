@@ -73,6 +73,10 @@
     <Compile Include="Migrations\202108051528178_AddComment.designer.cs">
       <DependentUpon>202108051528178_AddComment.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202108070630431_UpdateCommentModel.cs" />
+    <Compile Include="Migrations\202108070630431_UpdateCommentModel.designer.cs">
+      <DependentUpon>202108070630431_UpdateCommentModel.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -98,6 +102,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202108051528178_AddComment.resx">
       <DependentUpon>202108051528178_AddComment.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202108070630431_UpdateCommentModel.resx">
+      <DependentUpon>202108070630431_UpdateCommentModel.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

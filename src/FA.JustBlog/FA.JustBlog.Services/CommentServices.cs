@@ -15,6 +15,30 @@ namespace FA.JustBlog.Services
         {
         }
 
+        public override int Add(Comment entity)
+        {
+            entity.CommentTime = DateTime.Now;
+            return base.Add(entity);
+        }
+
+        public override Task<int> AddAsync(Comment entity)
+        {
+            entity.CommentTime = DateTime.Now;
+            return base.AddAsync(entity);
+        }
+
+        public override bool Update(Comment entity)
+        {
+            entity.CommentTime = DateTime.Now;
+            return base.Update(entity);
+        }
+
+        public override Task<bool> UpdateAsync(Comment entity)
+        {
+            entity.CommentTime = DateTime.Now;
+            return base.UpdateAsync(entity);
+        }
+
         public async Task<int> AddCommentAsync(int postId, string commentName, string commentEmail, string commentTitle, string commentBody)
         {
             var comment = new Comment
