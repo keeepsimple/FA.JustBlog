@@ -151,12 +151,15 @@
     <Compile Include="App_Start\UnityMvcActivator.cs" />
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
     <Compile Include="Areas\Admin\Controllers\CategoryManagementController.cs" />
+    <Compile Include="Areas\Admin\Controllers\CommentManagementController.cs" />
     <Compile Include="Areas\Admin\Controllers\PostManagementController.cs" />
     <Compile Include="Areas\Admin\Controllers\TagManagementController.cs" />
     <Compile Include="Areas\Admin\ViewModels\CategoryViewModel.cs" />
+    <Compile Include="Areas\Admin\ViewModels\CommentViewModel.cs" />
     <Compile Include="Areas\Admin\ViewModels\PostViewModel.cs" />
     <Compile Include="Areas\Admin\ViewModels\TagViewModel.cs" />
     <Compile Include="Controllers\CategoriesController.cs" />
+    <Compile Include="Controllers\CommentsController.cs" />
     <Compile Include="ViewModels\CategoryMenuViewModel.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\PostsController.cs" />
@@ -814,6 +817,9 @@
     <Content Include="Areas\Admin\Views\PostManagement\Create.cshtml" />
     <Content Include="Areas\Admin\Views\PostManagement\Edit.cshtml" />
     <Content Include="Areas\Admin\Views\PostManagement\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\CommentManagement\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\CommentManagement\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\CommentManagement\Index.cshtml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
@@ -934,6 +940,7 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Models\" />
+    <Folder Include="Views\Comments\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

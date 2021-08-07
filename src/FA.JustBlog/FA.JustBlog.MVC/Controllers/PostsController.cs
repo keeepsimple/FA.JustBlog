@@ -45,6 +45,16 @@ namespace FA.JustBlog.MVC.Controllers
             return View(post);
         }
 
+        //public async Task<ActionResult> Details(int year, int month, string title)
+        //{
+        //    var post = await _postServices.FindPostAsync(year,month,title);
+        //    if (post == null)
+        //    {
+        //        return HttpNotFound();
+        //    }    
+        //    return View(post);
+        //}
+
         public ActionResult LastestPosts()
         {
             var lastestPosts = Task.Run(() => _postServices.GetLatestPostAsync(5)).Result;

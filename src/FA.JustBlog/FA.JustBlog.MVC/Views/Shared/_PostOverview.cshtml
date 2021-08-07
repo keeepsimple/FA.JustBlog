@@ -1,13 +1,29 @@
 ﻿<div class="card mb-3 shadow-card">
-    <a href="@Url.Action("Details", "Posts", new { @id = Model.Id})"><img src="~/assets/img/home-blog/@Model.ImageUrl" class="card-img-top" alt="@Model.Title"></a>
+        <a href="@Url.Action("Details", "Posts", new { @id = Model.Id})"><img src="~/assets/img/home-blog/@Model.ImageUrl" class="card-img-top" alt="@Model.Title"></a>
+        <div class="card-body">
+            <a href="@Url.Action("Details", "Categories", new { id = Model.Category.Id })" class="badge rounded-pill bg-info" style="text-decoration: none; color: white">@Model.Category.Name</a>
+
+            <a href="@Url.Action("Details", "Posts", new { @id = Model.Id})" class="card-title">@Model.Title</a>
+            <p class="card-text">@Model.ShortDescription</p>
+        </div>
+        <div class="card-footer">
+            <p class="card-text">
+            <i class="fas fa-calendar-alt"></i> @Model.PublishedDate.ToString("dd MMM yyyy") with rate @Model.Rate by @Model.ViewCount view(s)</p>
+        </div>
+    </div>
+
+@*<div class="card mb-3 shadow-card">
+    @Html.ActionLink("Details", "Posts", new { year = Model.PublishedDate.Year, month = Model.PublishedDate.Month.ToString("00"), title = Model.UrlSlug},null)
+        <img src="~/assets/img/home-blog/@Model.ImageUrl" class="card-img-top" alt="@Model.Title">
     <div class="card-body">
         <a href="@Url.Action("Details", "Categories", new { id = Model.Category.Id })" class="badge rounded-pill bg-info" style="text-decoration: none; color: white">@Model.Category.Name</a>
-        
+
         <a href="@Url.Action("Details", "Posts", new { @id = Model.Id})" class="card-title">@Model.Title</a>
         <p class="card-text">@Model.ShortDescription</p>
     </div>
     <div class="card-footer">
         <p class="card-text">
-        <i class="fas fa-calendar-alt"></i> @Model.PublishedDate.ToString("dd MMM yyyy") with rate @Model.Rate by @Model.ViewCount view(s)</p>
+            <i class="fas fa-calendar-alt"></i> @Model.PublishedDate.ToString("dd MMM yyyy") with rate @Model.Rate by @Model.ViewCount view(s)
+        </p>
     </div>
-</div>
+</div>*@
