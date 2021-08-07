@@ -159,7 +159,6 @@
     <Compile Include="Areas\Admin\ViewModels\PostViewModel.cs" />
     <Compile Include="Areas\Admin\ViewModels\TagViewModel.cs" />
     <Compile Include="Controllers\CategoriesController.cs" />
-    <Compile Include="Controllers\CommentsController.cs" />
     <Compile Include="ViewModels\CategoryMenuViewModel.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\PostsController.cs" />
@@ -940,7 +939,6 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Models\" />
-    <Folder Include="Views\Comments\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

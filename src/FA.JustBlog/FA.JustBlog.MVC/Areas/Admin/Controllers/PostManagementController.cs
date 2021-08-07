@@ -158,6 +158,11 @@ namespace FA.JustBlog.MVC.Areas.Admin.Controllers
         {
             var tags = new List<Tag>();
 
+            if(selectedTagIds == null)
+            {
+                return tags;
+            }
+
             var tagEntities = await _tagServices.GetAllAsync();
 
             foreach (var item in tagEntities)
@@ -186,7 +191,8 @@ namespace FA.JustBlog.MVC.Areas.Admin.Controllers
                 CategoryId = post.CategoryId,
                 ViewCount = post.ViewCount,
                 RateCount = post.RateCount,
-                TotalRate = post.TotalRate
+                TotalRate = post.TotalRate,
+                SelectedTagIds = post.Tags.Select(x => x.Id)
             };
             ViewBag.CategoryId = new SelectList(_categoryServices.GetAll(), "Id", "Name", postViewModel.CategoryId);
             postViewModel.Tags = _tagServices.GetAll().Select(t => new SelectListItem { Value = t.Id.ToString(), Text = t.Name });

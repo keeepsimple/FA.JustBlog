@@ -21,6 +21,6 @@
         <p>@Html.Raw(Model.PostContent)</p>
     </div>
     <div class="published-date">
-        <p><i class="fas fa-calendar-alt"></i> @Model.PublishedDate.ToString("dd MMM yyyy")</p>
+        <p><i class="fas fa-calendar-alt"></i> @Model.PublishedDate.ToString("MMM dd yyyy") - @ViewBag.PublishedDate</p>
     </div>
 </div>

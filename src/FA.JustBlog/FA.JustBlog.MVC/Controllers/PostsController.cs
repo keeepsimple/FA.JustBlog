@@ -5,6 +5,7 @@ using System.Linq;
 using System.Linq.Expressions;
 using System.Threading.Tasks;
 using System.Web.Mvc;
+using System.Web.Services.Description;
 
 namespace FA.JustBlog.MVC.Controllers
 {
@@ -42,6 +43,7 @@ namespace FA.JustBlog.MVC.Controllers
                 return HttpNotFound();
             }
             ViewBag.PostTitle = post.Title;
+            ViewBag.PublishedDate = ConvertTimePublished(post.PublishedDate);
             return View(post);
         }
 
@@ -65,9 +67,10 @@ namespace FA.JustBlog.MVC.Controllers
         public ActionResult MostViewedPosts()
         {
             var mostViewedPosts = Task.Run(() => _postServices.GetMostViewedPostAsync(5)).Result;
-            ViewBag.PartialViewTitle = "Most View Posts";
+            ViewBag.PartialViewTitle = "Popular Posts";
             return PartialView("_ListPosts", mostViewedPosts);
         }
+
 
         //public ActionResult HighestPosts()
         //{
@@ -75,5 +78,49 @@ namespace FA.JustBlog.MVC.Controllers
         //    ViewBag.PartialViewTitle = "Highest Posts";
         //    return PartialView("_ListPost", lastestPosts);
         //}
+
+        //convert published time to text
+        public string ConvertTimePublished(DateTime publishedDate)
+        {
+            const int second = 1;
+            const int minute = 60 * second;
+            const int hour = 60 * minute;
+            const int day = 24 * hour;
+            const int month = 30 * day;
+
+            var time = new TimeSpan(DateTime.Now.Ticks - publishedDate.Ticks);
+            double interval = Math.Abs(time.TotalSeconds);
+
+            if (interval < 1 * minute)
+            {
+                return time.Seconds == 1 ? "one second ago" : time.Seconds + " seconds ago";
+            }
+
+            if (interval < 59 * minute)
+            {
+                return time.Minutes == 1 ? "one minute ago" : time.Minutes + " minutes ago";
+            }
+
+            if (interval < 24 * hour)
+            {
+                return time.Hours == 1 ? "an hour ago" : time.Hours + " hours ago";
+            }
+
+            if (interval < 30 * day)
+            {
+                return time.Days == 1 ? "one day ago" : time.Days + " days ago";
+            }
+
+            if (interval < 12 * month)
+            {
+                int months = Convert.ToInt32(Math.Floor((double)time.Days / 30));
+                return months == 1 ? "one month ago" : months + " months ago";
+            }
+            else
+            {
+                int years = Convert.ToInt32(Math.Floor((double)time.Days / 365));
+                return years == 1 ? "one year ago" : years + " years ago";
+            }
+        }
     }
 }
