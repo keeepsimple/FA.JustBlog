@@ -20,6 +20,9 @@ namespace FA.JustBlog.Models.Common
         [StringLength(255, ErrorMessage = "The {0} must between {2} and {1} characters", MinimumLength = 4)]
         public string ImageUrl { get; set; }
 
+        [StringLength(255, ErrorMessage = "The {0} must between {2} and {1} characters", MinimumLength = 4)]
+        public string ImageSlider { get; set; }
+
         [Required(ErrorMessage = "The {0} is required")]
         public string PostContent { get; set; }
 

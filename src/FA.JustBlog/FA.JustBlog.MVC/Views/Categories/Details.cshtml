@@ -3,8 +3,19 @@
     ViewBag.Title = ViewBag.CategoryName;
 }
 
-@foreach (var item in Model)
-{
-    @Html.Partial("_PostOverview", item);
-}
-
+@Html.Action("CategoryBanner", "Categories")
+<section class="blog_area p_120">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8">
+                <div class="blog_left_sidebar">
+                    @foreach (var item in Model)
+                    {
+                        @Html.Partial("_PostOverview", item);
+                    }
+                </div>
+            </div>
+            @Html.Partial("_RightMenu")
+        </div>
+    </div>
+</section>

@@ -2,25 +2,76 @@
 @{
     ViewBag.Title = ViewBag.PostTitle;
 }
+@Html.Partial("_PostBanner")
+<section class="blog_area p_120">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8">
+                <div class="blog_left_sidebar">
+                    <div class="main_blog_details">
+                        <img src="~/assets/img/home-blog/@Model.ImageUrl" class="img-fluid" alt="@Model.Title">
+                        <div class="user_details">
+                            <div class="float-left">
+                                @foreach (var item in Model.Tags)
+                                {
+                                    <a href="@Url.Action("Details", "Tags", new { id = item.Id})">
+                                        @item.Name
+                                    </a>
+                                }
+                            </div>
+                            <div class="float-right"></div>
+                        </div>
+                        <div class="post-content">
+                            <p>@Html.Raw(Model.PostContent)</p>
+                        </div>
+                        <div class="news_d_footer">
+                            <p><i class="fas fa-calendar-alt"></i> @Model.PublishedDate.ToString("MMM dd yyyy") - @ViewBag.PublishedDate</p>
+                            <a class="justify-content-center ml-auto" href="#comment-area"><i class="lnr lnr lnr-bubble"></i>@Model.Comments.Count @(Model.Comments.Count<=1?"Comment":"Comments")</a>
+                            <div class="news_socail ml-auto">
+                                <a href="#"><i class="fa fa-facebook"></i></a>
+                                <a href="#"><i class="fa fa-twitter"></i></a>
+                                <a href="#"><i class="fa fa-youtube-play"></i></a>
+                                <a href="#"><i class="fa fa-pinterest"></i></a>
+                                <a href="#"><i class="fa fa-rss"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="navigation-area">
+                        <div class="row">
+                            <div class="col-lg-6 col-md-6 col-12 nav-left flex-row d-flex justify-content-start align-items-center">
+                                <div class="thumb">
+                                    <a href="#"><img class="img-fluid" src="~/assets/img/blog/prev.jpg" alt=""></a>
+                                </div>
+                                <div class="arrow">
+                                    <a href="#"><span class="lnr text-white lnr-arrow-left"></span></a>
+                                </div>
+                                <div class="detials">
+                                    <p>Prev Post</p>
+                                    <a href="#"><h4>Space The Final Frontier</h4></a>
+                                </div>
+                            </div>
+                            <div class="col-lg-6 col-md-6 col-12 nav-right flex-row d-flex justify-content-end align-items-center">
+                                <div class="detials">
+                                    <p>Next Post</p>
+                                    <a href="#"><h4>Telescopes 101</h4></a>
+                                </div>
+                                <div class="arrow">
+                                    <a href="#"><span class="lnr text-white lnr-arrow-right"></span></a>
+                                </div>
+                                <div class="thumb">
+                                    <a href="#"><img class="img-fluid" src="~/assets/img/blog/next.jpg" alt=""></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="comments-area" id="comment-area">
+                        <h4>@Model.Comments.Count @(Model.Comments.Count<=1?"Comment":"Comments")</h4>
+                        @Html.Action("GetCommentByPost", "Comments")
+                    </div>
+                </div>
+            </div>
+            @Html.Partial("_RightMenu")
+        </div>
+    </div>
+</section>
 
-<div class="post-detail">
-    <img src="~/assets/img/home-blog/@Model.ImageUrl" class="img-fluid" alt="@Model.Title">
-    <h1>@Model.Title</h1>
-    <div class="tags">
-        @foreach (var item in Model.Tags)
-        {
-            <a href="@Url.Action("Details", "Tags", new { id = item.Id})" class="badge rounded-pill bg-primary" style="text-decoration: none; color: white">
-                @item.Name
-            </a>
-        }
-    </div>
-    <div class="short-description">
-        @Model.ShortDescription
-    </div>
-    <div class="post-content">
-        <p>@Html.Raw(Model.PostContent)</p>
-    </div>
-    <div class="published-date">
-        <p><i class="fas fa-calendar-alt"></i> @Model.PublishedDate.ToString("MMM dd yyyy") - @ViewBag.PublishedDate</p>
-    </div>
-</div>

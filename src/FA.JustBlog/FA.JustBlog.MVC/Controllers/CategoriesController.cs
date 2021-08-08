@@ -1,4 +1,5 @@
-﻿using FA.JustBlog.Services;
+﻿using FA.JustBlog.MVC.ViewModels;
+using FA.JustBlog.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -29,6 +30,23 @@ namespace FA.JustBlog.MVC.Controllers
             var posts = await _postServices.GetPostsByCategoryAsync(category.Id);
             ViewBag.CategoryName = category.Name;
             return View(posts);
+        }
+
+        public ActionResult CategoryRightMenu()
+        {
+            var categories = _categoryServices.GetAll().Select(x => new CategoryRightMenuViewModel
+            {
+                Id = x.Id,
+                Name = x.Name,
+                PostsCount = x.Posts.Count
+            }) ;
+            return PartialView("_CategoryRightMenu", categories);
+        }
+
+        public ActionResult CategoryBanner(Guid id)
+        {
+            var category = _categoryServices.GetById(id);
+            return PartialView("_CategoryBanner", category);
         }
     }
 }

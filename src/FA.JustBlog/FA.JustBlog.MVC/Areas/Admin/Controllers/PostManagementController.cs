@@ -143,6 +143,7 @@ namespace FA.JustBlog.MVC.Areas.Admin.Controllers
                     ViewCount = postViewModel.ViewCount,
                     RateCount = postViewModel.RateCount,
                     TotalRate = postViewModel.TotalRate,
+                    ImageSlider = postViewModel.ImageSlider,
                     Tags = await GetSelectedTagFromIds(postViewModel.SelectedTagIds)
                 };
                 var result = await _postServices.AddAsync(post);
@@ -192,6 +193,7 @@ namespace FA.JustBlog.MVC.Areas.Admin.Controllers
                 ViewCount = post.ViewCount,
                 RateCount = post.RateCount,
                 TotalRate = post.TotalRate,
+                ImageSlider = post.ImageSlider,
                 SelectedTagIds = post.Tags.Select(x => x.Id)
             };
             ViewBag.CategoryId = new SelectList(_categoryServices.GetAll(), "Id", "Name", postViewModel.CategoryId);
@@ -225,6 +227,7 @@ namespace FA.JustBlog.MVC.Areas.Admin.Controllers
                 post.ViewCount = postViewModel.ViewCount;
                 post.RateCount = postViewModel.RateCount;
                 post.TotalRate = postViewModel.TotalRate;
+                post.ImageSlider = postViewModel.ImageSlider;
                 await UpdateSelectedTagsFromIds(postViewModel.SelectedTagIds, post);
                 var result = await _postServices.UpdateAsync(post);
                 if (result)

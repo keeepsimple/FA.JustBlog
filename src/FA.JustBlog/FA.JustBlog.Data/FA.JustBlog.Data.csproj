@@ -77,6 +77,10 @@
     <Compile Include="Migrations\202108070630431_UpdateCommentModel.designer.cs">
       <DependentUpon>202108070630431_UpdateCommentModel.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202108072122342_AddImageSliderForPostModel.cs" />
+    <Compile Include="Migrations\202108072122342_AddImageSliderForPostModel.designer.cs">
+      <DependentUpon>202108072122342_AddImageSliderForPostModel.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -105,6 +109,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202108070630431_UpdateCommentModel.resx">
       <DependentUpon>202108070630431_UpdateCommentModel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202108072122342_AddImageSliderForPostModel.resx">
+      <DependentUpon>202108072122342_AddImageSliderForPostModel.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

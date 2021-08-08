@@ -166,6 +166,7 @@ namespace FA.JustBlog.MVC.Areas.Admin.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [ValidateInput(false)]
         public async Task<ActionResult> Edit(CommentViewModel commentViewModel)
         {
             if (ModelState.IsValid)

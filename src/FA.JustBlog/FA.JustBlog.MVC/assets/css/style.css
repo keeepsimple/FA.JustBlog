@@ -181,7 +181,7 @@ button:focus {
 }
 
 .header_area + section, .header_area + div {
-  margin-top: 210px;
+  margin-top: 158px !important;
 }
 
 .top_menu {

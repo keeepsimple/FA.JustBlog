@@ -42,8 +42,8 @@
                 margin: 0,
                 items: 4,
                 nav: false,
-                autoplay: false,
-                smartSpeed: 1500,
+                autoplay: true,
+                smartSpeed: 1000,
                 dots:false, 
                 responsiveClass: true,
                 responsive: {
