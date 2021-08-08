@@ -100,5 +100,10 @@ namespace FA.JustBlog.Services
         {
             return await _unitOfWork.PostRepository.GetQuery().Where(x=>x.PublishedDate.Year == year && x.PublishedDate.Month == month && x.UrlSlug.Equals(title)).ToListAsync();
         }
+
+        public IEnumerable<Post> GetMostViewedPost(int size)
+        {
+            return _unitOfWork.PostRepository.GetQuery().OrderByDescending(x => x.ViewCount).Take(size).ToList();
+        }
     }
 }

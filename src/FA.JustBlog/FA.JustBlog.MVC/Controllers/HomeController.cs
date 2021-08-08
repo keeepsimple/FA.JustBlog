@@ -43,6 +43,12 @@ namespace FA.JustBlog.MVC.Controllers
             return PartialView("_Menu", categoryMenuViewModel);
         }
 
+        public ActionResult PostSlider()
+        {
+            var posts = _postServices.GetMostViewedPost(4);
+            return PartialView("_PostSlider", posts);
+        }
+
         public ActionResult About()
         {
             ViewBag.Message = "Your application description page.";

@@ -53,7 +53,8 @@ namespace FA.JustBlog.Data
                 IsDeleted = false,
                 ViewCount = 300,
                 RateCount = 160,
-                TotalRate = 350
+                TotalRate = 350,
+                ImageSlider = "post-s-3.jpg"
             };
             var post2 = new Post()
             {
@@ -69,7 +70,8 @@ namespace FA.JustBlog.Data
                 IsDeleted = false,
                 ViewCount = 700,
                 RateCount = 660,
-                TotalRate = 1000
+                TotalRate = 1000,
+                ImageSlider = "post-s-4.jpg"
             };
             var post3 = new Post()
             {
@@ -85,7 +87,8 @@ namespace FA.JustBlog.Data
                 IsDeleted = false,
                 ViewCount = 400,
                 RateCount = 260,
-                TotalRate = 400
+                TotalRate = 400,
+                ImageSlider = "post-s-2.jpg"
             };
 
             var post4 = new Post()
@@ -102,7 +105,8 @@ namespace FA.JustBlog.Data
                 IsDeleted = false,
                 ViewCount = 1000,
                 RateCount = 1000,
-                TotalRate = 3000
+                TotalRate = 3000,
+                ImageSlider = "post-s-1.jpg"
             };
 
             var post5 = new Post()
@@ -119,7 +123,8 @@ namespace FA.JustBlog.Data
                 IsDeleted = false,
                 ViewCount = 562,
                 RateCount = 397,
-                TotalRate = 672
+                TotalRate = 672,
+                ImageSlider = "post-s-4.jpg"
             };
 
             var post6 = new Post()
@@ -136,7 +141,8 @@ namespace FA.JustBlog.Data
                 IsDeleted = false,
                 ViewCount = 973,
                 RateCount = 832,
-                TotalRate = 1631
+                TotalRate = 1631,
+                ImageSlider = "post-s-4.jpg"
             };
 
             var tags = new List<Tag>()
