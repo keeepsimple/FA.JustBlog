@@ -28,8 +28,8 @@ namespace FA.JustBlog.MVC.Controllers
                 return HttpNotFound();
             }
             var posts = await _postServices.GetPostsByCategoryAsync(category.Id);
-            ViewBag.CategoryName = category.Name;
-            return View(posts);
+            ViewBag.Name = category.Name;
+            return View("_ListPosts",posts);
         }
 
         public ActionResult CategoryRightMenu()
@@ -41,12 +41,6 @@ namespace FA.JustBlog.MVC.Controllers
                 PostsCount = x.Posts.Count
             }) ;
             return PartialView("_CategoryRightMenu", categories);
-        }
-
-        public ActionResult CategoryBanner(Guid id)
-        {
-            var category = _categoryServices.GetById(id);
-            return PartialView("_CategoryBanner", category);
         }
     }
 }

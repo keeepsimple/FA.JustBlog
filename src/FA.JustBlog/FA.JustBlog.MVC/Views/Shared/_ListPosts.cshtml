@@ -1,9 +1,9 @@
 ﻿@model IEnumerable<Post>
 @{
-    ViewBag.Title = ViewBag.CategoryName;
+    ViewBag.Title = ViewBag.Name;
 }
 
-@Html.Action("CategoryBanner", "Categories")
+@Html.Partial("_Banner")
 <section class="blog_area p_120">
     <div class="container">
         <div class="row">
