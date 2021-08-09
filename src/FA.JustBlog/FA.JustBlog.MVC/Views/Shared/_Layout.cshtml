@@ -4,8 +4,6 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewBag.Title - Just Blog</title>
-    <link rel="stylesheet" href="~/assets/css/customize.css" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     @*@Styles.Render("~/Content/css")
         @Scripts.Render("~/bundles/modernizr")*@
     <link rel="stylesheet" href="~/assets/css/bootstrap.css">
@@ -20,6 +18,8 @@
     <!-- main css -->
     <link rel="stylesheet" href="~/assets/css/style.css">
     <link rel="stylesheet" href="~/assets/css/responsive.css">
+    <link rel="stylesheet" href="~/assets/css/customize.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 <body>
     <header class="header_area">
@@ -46,15 +46,26 @@
                             <li class="nav-item">@Html.ActionLink("Post", "Index", "Posts", new { area = "" }, new { @class = "nav-link" })</li>
                             <li class="nav-item">@Html.ActionLink("About", "About", "Home", new { area = "" }, new { @class = "nav-link" })</li>
                             <li class="nav-item">@Html.ActionLink("Contact", "Contact", "Home", new { area = "" }, new { @class = "nav-link" })</li>
-                            <li class="nav-item submenu dropdown">
-                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Admin</a>
-                                <ul class="dropdown-menu">
-                                    <li class="nav-item"><a class="nav-link" href="@Url.Action("CategoryManagement", "Admin")">Category Management</a></li>
-                                    <li class="nav-item"><a class="nav-link" href="@Url.Action("TagManagement", "Admin")">Tag Management</a></li>
-                                    <li class="nav-item"><a class="nav-link" href="@Url.Action("PostManagement","Admin")">Post Management</a></li>
-                                    <li class="nav-item"><a class="nav-link" href="@Url.Action("CommentManagement","Admin")">Comment Management</a></li>
-                                </ul>
-                            </li>
+                            @if (Request.IsAuthenticated && User.IsInRole("Admin"))
+                            {
+                                <li class="nav-item submenu dropdown">
+                                    <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Account Dashboard</a>
+                                    <ul class="dropdown-menu">
+                                        <li class="nav-item"><a class="nav-link" href="@Url.Action("Index", "UsersAdmin", new { area = "Identity" })">Users Admin</a></li>
+                                        <li class="nav-item"><a class="dropdown-item" href="@Url.Action("Index", "RolesAdmin", new { area = "Identity" })">Roles Admin</a></li>
+                                    </ul>
+                                </li>
+                                <li class="nav-item submenu dropdown">
+                                    <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Admin Dashboard</a>
+                                    <ul class="dropdown-menu">
+                                        <li class="nav-item"><a class="nav-link" href="@Url.Action("CategoryManagement", "Admin")">Category Management</a></li>
+                                        <li class="nav-item"><a class="nav-link" href="@Url.Action("TagManagement", "Admin")">Tag Management</a></li>
+                                        <li class="nav-item"><a class="nav-link" href="@Url.Action("PostManagement","Admin")">Post Management</a></li>
+                                        <li class="nav-item"><a class="nav-link" href="@Url.Action("CommentManagement","Admin")">Comment Management</a></li>
+                                    </ul>
+                                </li>
+                            }
+                            @Html.Partial("_LoginPartial")
                         </ul>
                     </div>
                 </div>
