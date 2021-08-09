@@ -87,6 +87,10 @@
     <Compile Include="Migrations\202108072122342_AddImageSliderForPostModel.designer.cs">
       <DependentUpon>202108072122342_AddImageSliderForPostModel.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202108091102130_ApplyIdentity.cs" />
+    <Compile Include="Migrations\202108091102130_ApplyIdentity.designer.cs">
+      <DependentUpon>202108091102130_ApplyIdentity.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -118,6 +122,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202108072122342_AddImageSliderForPostModel.resx">
       <DependentUpon>202108072122342_AddImageSliderForPostModel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202108091102130_ApplyIdentity.resx">
+      <DependentUpon>202108091102130_ApplyIdentity.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

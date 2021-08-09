@@ -26,9 +26,9 @@ namespace FA.JustBlog.MVC.Controllers
             {
                 return HttpNotFound();
             }
-            var post = await _postServices.GetPostsByTagAsync(tag.Id);
-            ViewBag.TagName = tag.Name;
-            return View(post);
+            var posts = await _postServices.GetPostsByTagAsync(tag.Id);
+            ViewBag.Name = tag.Name;
+            return View("_ListPosts",posts);
         }
 
         public ActionResult PopularTags()

@@ -44,15 +44,13 @@
                             <li class="nav-item">@Html.ActionLink("Home", "Index", "Home", new { area = "" }, new { @class = "nav-link" })</li>
                             <li class="nav-item">@Html.Action("Menu", "Home")</li>
                             <li class="nav-item">@Html.ActionLink("Post", "Index", "Posts", new { area = "" }, new { @class = "nav-link" })</li>
-                            <li class="nav-item">@Html.ActionLink("About", "About", "Home", new { area = "" }, new { @class = "nav-link" })</li>
-                            <li class="nav-item">@Html.ActionLink("Contact", "Contact", "Home", new { area = "" }, new { @class = "nav-link" })</li>
                             @if (Request.IsAuthenticated && User.IsInRole("Admin"))
                             {
                                 <li class="nav-item submenu dropdown">
                                     <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Account Dashboard</a>
                                     <ul class="dropdown-menu">
                                         <li class="nav-item"><a class="nav-link" href="@Url.Action("Index", "UsersAdmin", new { area = "Identity" })">Users Admin</a></li>
-                                        <li class="nav-item"><a class="dropdown-item" href="@Url.Action("Index", "RolesAdmin", new { area = "Identity" })">Roles Admin</a></li>
+                                        <li class="nav-item"><a class="nav-link" href="@Url.Action("Index", "RolesAdmin", new { area = "Identity" })">Roles Admin</a></li>
                                     </ul>
                                 </li>
                                 <li class="nav-item submenu dropdown">
