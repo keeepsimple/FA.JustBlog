@@ -1,16 +1,27 @@
 ﻿using FA.JustBlog.Models.BaseEntities;
 using FA.JustBlog.Models.Common;
+using FA.JustBlog.Models.Security;
+using Microsoft.AspNet.Identity.EntityFramework;
 using System;
 using System.Data.Entity;
 using System.Threading.Tasks;
 
 namespace FA.JustBlog.Data
 {
-    public class JustBlogContext : DbContext
+    public class JustBlogContext : IdentityDbContext<User>
     {
         public JustBlogContext() : base("JustBlogCnn")
         {
-            Database.SetInitializer(new DbInitializer());
+        }
+
+        static JustBlogContext()
+        {
+            Database.SetInitializer<JustBlogContext>(new DbInitializer());
+        }
+
+        public static JustBlogContext Create()
+        {
+            return new JustBlogContext();
         }
 
         public DbSet<Category> Categories { get; set; }
@@ -51,13 +62,13 @@ namespace FA.JustBlog.Data
             var entities = this.ChangeTracker.Entries();
             foreach (var entry in entities)
             {
-                if(entry.Entity is IBaseEntity entityBase)
+                if (entry.Entity is IBaseEntity entityBase)
                 {
                     switch (entry.State)
                     {
                         case EntityState.Modified: entityBase.UpdatedAt = DateTime.Now; break;
-                        case EntityState.Added: 
-                            entityBase.UpdatedAt = DateTime.Now; 
+                        case EntityState.Added:
+                            entityBase.UpdatedAt = DateTime.Now;
                             entityBase.InsertedAt = DateTime.Now;
                             break;
                     }

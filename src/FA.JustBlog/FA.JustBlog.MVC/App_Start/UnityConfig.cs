@@ -6,6 +6,8 @@ using System;
 
 using Unity;
 using FA.JustBlog.Data;
+using FA.JustBlog.MVC.Controllers;
+using Unity.Injection;
 
 namespace FA.JustBlog.MVC
 {
@@ -48,6 +50,8 @@ namespace FA.JustBlog.MVC
             // TODO: Register your type's mappings here.
             container.RegisterSingleton<JustBlogContext, JustBlogContext>();
             container.RegisterType<IUnitOfWork, UnitOfWork>();
+            container.RegisterType<AccountController>(new InjectionConstructor());
+            container.RegisterType<ManageController>(new InjectionConstructor());
             container.RegisterType<IGenericRepository<Category>, GenericRepository<Category>>();
             container.RegisterType<IGenericRepository<Tag>, GenericRepository<Tag>>();
             container.RegisterType<IGenericRepository<Category>, GenericRepository<Category>>();
