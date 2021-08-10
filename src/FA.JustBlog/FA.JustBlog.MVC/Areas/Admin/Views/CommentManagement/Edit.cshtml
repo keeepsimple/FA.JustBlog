@@ -41,7 +41,7 @@
         <div class="form-group col-md-6">
             @Html.LabelFor(model => model.PostId, "PostId", htmlAttributes: new { @class = "control-label" })
             <div>
-                @Html.DropDownList("PostId", null, htmlAttributes: new { @class = "select-single" })
+                @Html.DropDownList("PostId", null, htmlAttributes: new { @class = "select-single", style = "width:100%" })
                 @Html.ValidationMessageFor(model => model.PostId, "", new { @class = "text-danger" })
             </div>
         </div>

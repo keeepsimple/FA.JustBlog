@@ -13,6 +13,8 @@ using System.Web.Mvc;
 
 namespace FA.JustBlog.MVC.Areas.Admin.Controllers
 {
+    [Authorize(Roles = "Admin, Contributer")]
+
     public class PostManagementController : Controller
     {
         private readonly IPostServices _postServices;

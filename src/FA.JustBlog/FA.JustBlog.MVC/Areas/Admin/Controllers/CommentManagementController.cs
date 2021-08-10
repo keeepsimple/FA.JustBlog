@@ -18,6 +18,8 @@ using FA.JustBlog.Services;
 
 namespace FA.JustBlog.MVC.Areas.Admin.Controllers
 {
+    [Authorize(Roles = "Admin, Contributer")]
+
     public class CommentManagementController : Controller
     {
         private readonly ICommentServices _commentServices;
