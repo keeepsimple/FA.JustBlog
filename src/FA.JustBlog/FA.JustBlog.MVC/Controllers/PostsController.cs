@@ -29,9 +29,21 @@ namespace FA.JustBlog.MVC.Controllers
             return View(posts);
         }
 
-        public async Task<ActionResult> Details(Guid id)
+        //public async Task<ActionResult> Details(Guid id)
+        //{
+        //    var post = await _postServices.GetByIdAsync(id);
+        //    if (post == null)
+        //    {
+        //        return HttpNotFound();
+        //    }
+        //    ViewBag.PostTitle = post.Title;
+        //    ViewBag.PublishedDate = ConvertTimePublished(post.PublishedDate);
+        //    return View(post);
+        //}
+
+        public async Task<ActionResult> Details(int year, int month, string urlSlug)
         {
-            var post = await _postServices.GetByIdAsync(id);
+            var post = await _postServices.FindPostAsync(year, month, urlSlug);
             if (post == null)
             {
                 return HttpNotFound();
@@ -40,16 +52,6 @@ namespace FA.JustBlog.MVC.Controllers
             ViewBag.PublishedDate = ConvertTimePublished(post.PublishedDate);
             return View(post);
         }
-
-        //public async Task<ActionResult> Details(int year, int month, string title)
-        //{
-        //    var post = await _postServices.FindPostAsync(year,month,title);
-        //    if (post == null)
-        //    {
-        //        return HttpNotFound();
-        //    }    
-        //    return View(post);
-        //}
 
         public ActionResult LastestPosts()
         {

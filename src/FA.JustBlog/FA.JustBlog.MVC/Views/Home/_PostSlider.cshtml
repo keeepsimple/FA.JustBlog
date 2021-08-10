@@ -11,7 +11,7 @@
                     </div>
                     <div class="post_text">
                         <a href="@Url.Action("Details", "Categories", new { id = item.Category.Id })" class="cat">@item.Category.Name</a>
-                        <a href="@Url.Action("Details", "Posts", new { @id = item.Id})" class="card-title"><h4>@item.Title</h4></a>
+                        <a href="@Url.Action("Details", "Posts", new { year = item.PublishedDate.Year, month = item.PublishedDate.Month.ToString("D2"), urlSlug = item.UrlSlug})" class="card-title"><h4>@item.Title</h4></a>
                         <p>@item.ShortDescription</p>
                         <div class="date">
                             <a href="#"><i class="fa fa-calendar" aria-hidden="true"></i> @item.PublishedDate.ToString("MMM dd yyyy")</a>

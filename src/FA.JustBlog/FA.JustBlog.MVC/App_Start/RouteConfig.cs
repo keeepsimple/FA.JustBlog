@@ -14,17 +14,19 @@ namespace FA.JustBlog.MVC
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
             routes.MapRoute(
+                "Posts",
+                "Posts/{year}/{month}/{urlSlug}",
+                new { controller = "Posts", action = "Details" },
+                new { year = @"\d{4}", month = @"\d{2}" }
+                );
+
+            routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
                 defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
             );
 
-            //routes.MapRoute(
-            //    name: "Posts",
-            //    url: "{Posts}/{year}/{month}/{title}",
-            //    new { controller = "Posts", action = "Details"},
-            //    new {year = @"\d{4}", month = @"\d{2}"}
-            //    );
+            
         }
     }
 }

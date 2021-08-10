@@ -11,6 +11,8 @@ using System.Web.Mvc;
 
 namespace FA.JustBlog.MVC.Areas.Admin.Controllers
 {
+    [Authorize(Roles = "Admin, Contributer")]
+
     public class TagManagementController : Controller
     {
         private readonly ITagServices _tagServices;

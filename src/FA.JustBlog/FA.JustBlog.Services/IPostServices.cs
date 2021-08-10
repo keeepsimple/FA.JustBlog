@@ -16,7 +16,7 @@ namespace FA.JustBlog.Services
 
         Task<IEnumerable<Post>> GetPostsByMonthAsync(DateTime monthYear);
 
-        Task<IEnumerable<Post>> FindPostAsync(int year, int month, string title);
+        Task<Post> FindPostAsync(int year, int month, string title);
 
         Task<int> CountPostsForCategoryAsync(string category);
 

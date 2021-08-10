@@ -34,9 +34,9 @@
     background-image: url("../img/footer.png");
     background-size: cover;
     width: 100%;
-    padding: 100px;
+    padding: 200px;
     background-attachment: fixed;
-    position: relative
+    position: relative;
 }
 
     .footer::before {

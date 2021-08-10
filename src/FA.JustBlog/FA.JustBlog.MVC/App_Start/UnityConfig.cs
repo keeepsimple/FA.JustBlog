@@ -1,13 +1,16 @@
-using FA.JustBlog.Data.Infrastructure.Repositories;
-using FA.JustBlog.Data.Infrastructure;
-using FA.JustBlog.Models.Common;
-using FA.JustBlog.Services;
-using System;
-
-using Unity;
 using FA.JustBlog.Data;
+using FA.JustBlog.Data.Infrastructure;
+using FA.JustBlog.Data.Infrastructure.Repositories;
+using FA.JustBlog.Models.Common;
 using FA.JustBlog.MVC.Controllers;
+using FA.JustBlog.Services;
+using Microsoft.AspNet.Identity.EntityFramework;
+using Microsoft.AspNet.Identity;
+using System;
+using Unity;
 using Unity.Injection;
+using FA.JustBlog.Models.Security;
+using FA.JustBlog.MVC.Areas.Identity.Controllers;
 
 namespace FA.JustBlog.MVC
 {
@@ -52,6 +55,8 @@ namespace FA.JustBlog.MVC
             container.RegisterType<IUnitOfWork, UnitOfWork>();
             container.RegisterType<AccountController>(new InjectionConstructor());
             container.RegisterType<ManageController>(new InjectionConstructor());
+            container.RegisterType<RolesAdminController>(new InjectionConstructor());
+            container.RegisterType<UsersAdminController>(new InjectionConstructor());
             container.RegisterType<IGenericRepository<Category>, GenericRepository<Category>>();
             container.RegisterType<IGenericRepository<Tag>, GenericRepository<Tag>>();
             container.RegisterType<IGenericRepository<Category>, GenericRepository<Category>>();
