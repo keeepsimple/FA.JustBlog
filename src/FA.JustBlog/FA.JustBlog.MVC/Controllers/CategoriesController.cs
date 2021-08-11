@@ -20,9 +20,9 @@ namespace FA.JustBlog.MVC.Controllers
             _postServices = postServices;
         }
 
-        public async Task<ActionResult> Details(Guid id)
+        public async Task<ActionResult> Details(string urlSlug)
         {
-            var category = await _categoryServices.GetByIdAsync(id);
+            var category = await _categoryServices.GetCategoryByUrlSlugAsync(urlSlug);
             if(category == null)
             {
                 return HttpNotFound();
@@ -38,7 +38,8 @@ namespace FA.JustBlog.MVC.Controllers
             {
                 Id = x.Id,
                 Name = x.Name,
-                PostsCount = x.Posts.Count
+                PostsCount = x.Posts.Count,
+                UrlSlug = x.UrlSlug
             }) ;
             return PartialView("_CategoryRightMenu", categories);
         }

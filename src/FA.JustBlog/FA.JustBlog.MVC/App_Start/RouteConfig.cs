@@ -21,6 +21,18 @@ namespace FA.JustBlog.MVC
                 );
 
             routes.MapRoute(
+                "Categories",
+                "Categories/{urlSlug}",
+                new { controller = "Categories", action = "Details" }
+                );
+
+            routes.MapRoute(
+                "Tags",
+                "Tags/{urlSlug}",
+                new { controller = "Tags", action = "Details" }
+                );
+
+            routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
                 defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }

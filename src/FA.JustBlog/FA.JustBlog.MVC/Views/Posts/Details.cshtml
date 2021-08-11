@@ -14,7 +14,7 @@
                             <div class="float-left">
                                 @foreach (var item in Model.Tags)
                                 {
-                                    <a href="@Url.Action("Details", "Tags", new { id = item.Id})">
+                                    <a href="@Url.Action("Details", "Tags", new { urlSlug = item.UrlSlug})">
                                         @item.Name
                                     </a>
                                 }
