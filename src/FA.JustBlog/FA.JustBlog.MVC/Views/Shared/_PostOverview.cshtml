@@ -5,9 +5,8 @@
     </div>
     <div class="blog_text">
         <div class="blog_text_inner">
-            <a class="cat" href="@Url.Action("Details", "Categories", new { id = Model.Category.Id })">@Model.Category.Name</a>
+            <a class="cat" href="@Url.Action("Details", "Categories", new { urlSlug = Model.Category.UrlSlug })">@Model.Category.Name</a>
             <a href="@Url.Action("Details", "Posts", new { year = Model.PublishedDate.Year, month = Model.PublishedDate.Month.ToString("D2"), urlSlug = Model.UrlSlug})"><h4>@Model.Title</h4></a>
-            @*<a href="@Url.Action("Details", "Posts", new { id = Model.Id })"><h4>@Model.Title</h4></a>*@
             <p>@Model.ShortDescription</p>
             <div class="date">
                 <a href="#"><i class="fa fa-calendar" aria-hidden="true"></i> @Model.PublishedDate.ToString("dd MMM yyyy")</a>

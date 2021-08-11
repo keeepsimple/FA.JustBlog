@@ -19,9 +19,9 @@ namespace FA.JustBlog.MVC.Controllers
             _postServices = postServices;
         }
 
-        public async Task<ActionResult> Details(Guid id)
+        public async Task<ActionResult> Details(string urlSlug)
         {
-            var tag = await _tagServices.GetByIdAsync(id);
+            var tag = await _tagServices.GetTagByUrlSlugAsync(urlSlug);
             if(tag == null)
             {
                 return HttpNotFound();

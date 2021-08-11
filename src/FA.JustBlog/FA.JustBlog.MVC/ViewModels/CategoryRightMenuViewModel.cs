@@ -12,5 +12,7 @@ namespace FA.JustBlog.MVC.ViewModels
         public string Name { get; set; }
 
         public int PostsCount { get; set; }
+
+        public string UrlSlug { get; set; }
     }
 }

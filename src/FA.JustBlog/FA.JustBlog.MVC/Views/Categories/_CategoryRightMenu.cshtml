@@ -5,7 +5,7 @@
         @foreach (var item in Model)
         {
             <li>
-                <a href="@Url.Action("Details", "Categories", new { id= item.Id})" class="d-flex justify-content-between">
+                <a href="@Url.Action("Details", "Categories", new { urlSlug = item.UrlSlug})" class="d-flex justify-content-between">
                     <p>@item.Name</p>
                     <p>@item.PostsCount</p>
                 </a>

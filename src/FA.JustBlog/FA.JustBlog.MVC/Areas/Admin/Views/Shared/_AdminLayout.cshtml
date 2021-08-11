@@ -4,66 +4,88 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewBag.Title - Just Blog</title>
+    @*@Styles.Render("~/Content/css")
+        @Scripts.Render("~/bundles/modernizr")*@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="~/assets/css/bootstrap.css">
+    <link rel="stylesheet" href="~/assets/vendors/linericon/style.css">
+    <link rel="stylesheet" href="~/assets/css/font-awesome.min.css">
+    <link rel="stylesheet" href="~/assets/vendors/owl-carousel/owl.carousel.min.css">
+    <link rel="stylesheet" href="~/assets/vendors/lightbox/simpleLightbox.css">
+    <link rel="stylesheet" href="~/assets/vendors/nice-select/css/nice-select.css">
+    <link rel="stylesheet" href="~/assets/vendors/animate-css/animate.css">
+    <link rel="stylesheet" href="~/assets/vendors/jquery-ui/jquery-ui.css">
     <link rel="stylesheet" href="~/assets/css/customize.css" />
-    @Styles.Render("~/Content/css")
-    @Scripts.Render("~/bundles/modernizr")
+    <!-- main css -->
+    <link rel="stylesheet" href="~/assets/css/responsive.css">
+    <link rel="stylesheet" href="~/assets/css/style.css">
+    <link rel="stylesheet" href="~/assets/css/customize.css" />
 </head>
 <body>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <a class="navbar-brand" href="@Url.Action("Index", "Home", new { area = "" })">
-            <img src="~/assets/img/bootstrap-logo.svg" width="30" height="30" class="d-inline-block align-top" alt="">
-            Just Blog
-        </a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
+    <header class="header_area">
+        <div class="main_menu">
+            <nav class="navbar navbar-expand-lg navbar-light">
+                <div class="container">
+                    @*Brand and toggle get grouped for better mobile display*@
+                    <a class="navbar-brand logo_h" href="@Url.Action("Index", "Home", new { area = "" })" style="font-size: 30px;font-family:open-sans, sans-serif">Just Blog</a>
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    @*Collect the nav links, forms, and other content for toggling*@
+                    <div class="collapse navbar-collapse offset" id="navbarSupportedContent">
+                        <ul class="nav navbar-nav menu_nav">
+                            <li class="nav-item">@Html.ActionLink("Home", "Index", "Home", new { area = "" }, new { @class = "nav-link" })</li>
+                            <li class="nav-item">@Html.Action("Menu", "Home", new { area = "" })</li>
+                            <li class="nav-item">@Html.ActionLink("Post", "Index", "Posts", new { area = "" }, new { @class = "nav-link" })</li>
+                            @Html.Partial("_LoginPartial")
+                            @*@if (Request.IsAuthenticated && User.IsInRole("Admin"))
+                                {
+                                    <li class="nav-item submenu dropdown">
+                                        <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Account Dashboard</a>
+                                        <ul class="dropdown-menu">
+                                            <li class="nav-item"><a class="nav-link" href="@Url.Action("Index", "UsersAdmin", new { area = "Identity" })">Users Admin</a></li>
+                                            <li class="nav-item"><a class="nav-link" href="@Url.Action("Index", "RolesAdmin", new { area = "Identity" })">Roles Admin</a></li>
+                                        </ul>
+                                    </li>
+                                    <li class="nav-item submenu dropdown">
+                                        <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Admin Dashboard</a>
+                                        <ul class="dropdown-menu">
+                                            <li class="nav-item"><a class="nav-link" href="@Url.Action("CategoryManagement", "Admin")">Category Management</a></li>
+                                            <li class="nav-item"><a class="nav-link" href="@Url.Action("TagManagement", "Admin")">Tag Management</a></li>
+                                            <li class="nav-item"><a class="nav-link" href="@Url.Action("PostManagement","Admin")">Post Management</a></li>
+                                            <li class="nav-item"><a class="nav-link" href="@Url.Action("CommentManagement","Admin")">Comment Management</a></li>
+                                        </ul>
+                                    </li>
+                                }*@
 
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav mr-auto">
-                <li class="nav-item active">
-                    @Html.ActionLink("Home", "Index", "Home", new { area = "" }, new { @class = "nav-link" })
-                </li>
-                <li class="nav-item active">
-                    @Html.ActionLink("About", "About", "Home", new { area = "" }, new { @class = "nav-link" })
-                </li>
-                <li class="nav-item active">
-                    @Html.ActionLink("Contact", "Contact", "Home", new { area = "" }, new { @class = "nav-link" })
-                </li>
-                <li class="nav-item active">
-                    @Html.ActionLink("Post", "Index", "Posts", new { area = "" }, new { @class = "nav-link" })
-                </li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Admin Area
-                    </a>
-                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="@Url.Action("Index","CategoryManagement")">Category Management</a>
-                        <a class="dropdown-item" href="@Url.Action("Index","TagManagement")">Tag Management</a>
-                        <a class="dropdown-item" href="@Url.Action("Index","PostManagement")">Post Management</a>
-                        <a class="dropdown-item" href="@Url.Action("Index","CommentManagement")">Comment Management</a>
-                        <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="#">Something else here</a>
+                        </ul>
                     </div>
-                </li>
-                @*<form class="form-inline my-2 my-lg-0">
-                        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-                        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-                    </form>*@
-            </ul>
+                </div>
+            </nav>
         </div>
-    </nav>
-    <div class="container body-content">
-        @RenderBody()
+    </header>
+    @RenderBody();
+    @Html.Partial("_Footer")
 
-        @Html.Partial("_Footer")
-    </div>
-
-    @Scripts.Render("~/bundles/jquery")
-    @Scripts.Render("~/bundles/bootstrap")
+    @*@Scripts.Render("~/bundles/jquery")
+        @Scripts.Render("~/bundles/bootstrap")*@
     @RenderSection("scripts", required: false)
+    <script src="~/assets/js/jquery-3.2.1.min.js"></script>
+    <script src="~/assets/js/popper.js"></script>
+    <script src="~/assets/js/bootstrap.min.js"></script>
+    <script src="~/assets/js/stellar.js"></script>
+    <script src="~/assets/vendors/lightbox/simpleLightbox.min.js"></script>
+    <script src="~/assets/vendors/nice-select/js/jquery.nice-select.min.js"></script>
+    <script src="~/assets/vendors/isotope/imagesloaded.pkgd.min.js"></script>
+    <script src="~/assets/vendors/isotope/isotope-min.js"></script>
+    <script src="~/assets/vendors/owl-carousel/owl.carousel.min.js"></script>
+    <script src="~/assets/vendors/jquery-ui/jquery-ui.js"></script>
+    <script src="~/assets/js/jquery.ajaxchimp.min.js"></script>
+    <script src="~/assets/js/mail-script.js"></script>
+    <script src="~/assets/js/theme.js"></script>
+    <script src="~/assets/js/justblog.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
-    <script src="~/Assets/js/justblog.js"></script>
 </body>
 </html>
