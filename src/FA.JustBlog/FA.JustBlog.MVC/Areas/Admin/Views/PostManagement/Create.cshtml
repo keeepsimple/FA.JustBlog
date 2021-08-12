@@ -18,7 +18,7 @@
         <div class="form-group col-md-6">
             @Html.LabelFor(model => model.Title, htmlAttributes: new { @class = "control-label" })
             <div>
-                @Html.EditorFor(model => model.Title, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.EditorFor(model => model.Title, new { htmlAttributes = new { @class = "form-control", onkeyup = "ConvertToSlug(this.value)" } })
                 @Html.ValidationMessageFor(model => model.Title, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -50,7 +50,7 @@
         <div class="form-group col-md-6">
             @Html.LabelFor(model => model.CategoryId, "CategoryId", htmlAttributes: new { @class = "control-label" })
             <div>
-                @Html.DropDownList("CategoryId", null, htmlAttributes: new { @class = "select-single", style = "width:100%" })
+                @Html.DropDownList("CategoryId", null, htmlAttributes: new { @class = "select-single" })
                 @Html.ValidationMessageFor(model => model.CategoryId, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -122,6 +122,6 @@
 }
 
 @section scripts {
-    <script src="~/Assets/js/ckeditor/ckeditor.js"></script>
-    <script src="~/Assets/js/ckeditor/ckeditorconfig.js"></script>
+    <script src="~/assets/js/ckeditor/ckeditor.js"></script>
+    <script src="~/assets/js/ckeditor/ckeditorconfig.js"></script>
 }

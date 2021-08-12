@@ -1,34 +1,37 @@
 ﻿@model IEnumerable<User>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Roles User";
 }
 
-<h2>Index</h2>
+<h2 style="text-align:center">Roles User</h2>
+<hr />
+<div>
+    <a href="@Url.Action("Create", "UsersAdmin")" class="btn btn-primary float-left" style="margin-bottom: 10px"><span class="fas fa-plus-square"></span></a>
+</div>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
-    <tr>
-        <th>
+<table class="table table-condensed table-bordered">
+    <tr class="d-flex center-title">
+
+        <th class="col-md-6">
             @Html.DisplayNameFor(model => model.UserName)
         </th>
-        <th>
-
-        </th>
+        <th class="col-md-6">Manage</th>
     </tr>
 
     @foreach (var item in Model)
     {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.UserName)
+        <tr class="d-flex center-title">
+            <td class="col-md-6">
+                <a href="@Url.Action("Edit", new { id = item.Id})">
+                    @item.UserName
+                </a>
             </td>
-            <td>
-                @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
-                @Html.ActionLink("Details", "Details", new { id = item.Id }) |
-                @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+            <td class="col-md-6">
+                <form action="@Url.Action("Delete", "UsersAdmin", new{ id = item.Id })" method="post">
+                    <a href="@Url.Action("Edit", "UsersAdmin", new { id = item.Id})" class="btn btn-primary"><i class="fas fa-edit"></i></a>
+                    <button type="submit" onclick="return confirm('Are you sure to delete this user?');" class="btn btn-danger"><i class="fas fa-trash"></i></button>
+                </form>
             </td>
         </tr>
     }
