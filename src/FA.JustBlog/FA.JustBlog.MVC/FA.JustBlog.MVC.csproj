@@ -1,6 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.Default.props" Condition="Exists('$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.Default.props')" />
   <Import Project="..\packages\EntityFramework.6.4.4\build\EntityFramework.props" Condition="Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.props')" />
   <Import Project="..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
@@ -10,7 +9,7 @@
     <ProductVersion>
     </ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{DF8F0FB8-42A3-4CD4-B580-AB1A2564C504}</ProjectGuid>
+    <ProjectGuid>{8C1922C3-4F7E-47E0-BBEC-4135D63A287B}</ProjectGuid>
     <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
@@ -20,14 +19,13 @@
     <MvcBuildViews>false</MvcBuildViews>
     <UseIISExpress>true</UseIISExpress>
     <Use64BitIISExpress />
-    <IISExpressSSLPort>44349</IISExpressSSLPort>
+    <IISExpressSSLPort>44327</IISExpressSSLPort>
     <IISExpressAnonymousAuthentication />
     <IISExpressWindowsAuthentication />
     <IISExpressUseClassicPipelineMode />
     <UseGlobalApplicationHostFile />
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
-    <TypeScriptToolsVersion>4.2</TypeScriptToolsVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -48,14 +46,14 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="AspNet.Identity.Samples, Version=1.0.2.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\AspNet.Identity.Samples.1.0.2\lib\net48\AspNet.Identity.Samples.dll</HintPath>
-    </Reference>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.dll</HintPath>
     </Reference>
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="Identity.Samples, Version=1.0.6.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Identity.Samples.1.0.6\lib\net472\Identity.Samples.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.AspNet.Identity.Core, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.AspNet.Identity.Core.2.2.3\lib\net45\Microsoft.AspNet.Identity.Core.dll</HintPath>
@@ -209,17 +207,20 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\CategoriesController.cs" />
     <Compile Include="Controllers\CommentsController.cs" />
-    <Compile Include="Controllers\ManageController.cs" />
-    <Compile Include="Startup.cs" />
-    <Compile Include="ViewModels\AccountViewModels.cs" />
-    <Compile Include="ViewModels\CategoryMenuViewModel.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\PostsController.cs" />
     <Compile Include="Controllers\TagsController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\ApplicationDbContext.cs" />
+    <Compile Include="Models\ApplicationDbInitializer.cs" />
+    <Compile Include="Models\ApplicationUser.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Startup.cs" />
+    <Compile Include="ViewModels\AccountViewModels.cs" />
+    <Compile Include="ViewModels\CategoryMenuViewModel.cs" />
     <Compile Include="ViewModels\CategoryRightMenuViewModel.cs" />
     <Compile Include="ViewModels\ManageViewModels.cs" />
   </ItemGroup>
@@ -228,6 +229,7 @@
     <Content Include="assets\css\bootstrap.min.css" />
     <Content Include="assets\css\breadcrumb.css" />
     <Content Include="assets\css\customize.css" />
+    <Content Include="assets\css\dashboard.css" />
     <Content Include="assets\css\font-awesome.min.css" />
     <Content Include="assets\css\responsive.css" />
     <Content Include="assets\css\Site.css" />
@@ -325,6 +327,7 @@
     <Content Include="assets\img\elements\user2.png" />
     <Content Include="assets\img\favicon.png" />
     <Content Include="assets\img\footer-logo.png" />
+    <Content Include="assets\img\footer.png" />
     <Content Include="assets\img\home-blog\blog-1.jpg" />
     <Content Include="assets\img\home-blog\blog-2.jpg" />
     <Content Include="assets\img\home-blog\blog-3.jpg" />
@@ -754,6 +757,7 @@
     <Content Include="assets\js\ckeditor\skins\moono-lisa\images\spinner.gif" />
     <Content Include="assets\js\ckeditor\styles.js" />
     <Content Include="assets\js\contact.js" />
+    <Content Include="assets\js\dashboard.js" />
     <Content Include="assets\js\gmaps.min.js" />
     <Content Include="assets\js\jquery-3.2.1.min.js" />
     <Content Include="assets\js\jquery-3.4.1.js" />
@@ -794,6 +798,18 @@
     <Content Include="assets\vendors\owl-carousel\assets\owl.carousel.css" />
     <Content Include="assets\vendors\owl-carousel\owl.carousel.min.css" />
     <Content Include="assets\vendors\owl-carousel\owl.carousel.min.js" />
+    <Content Include="Content\Assets\css\bootstrap.min.css" />
+    <Content Include="Content\Assets\css\Site.css" />
+    <Content Include="Content\Assets\images\bootstrap-solid.svg" />
+    <Content Include="Content\Assets\js\bootstrap.min.js" />
+    <Content Include="Content\Assets\js\jquery-3.4.1.js" />
+    <Content Include="Content\Assets\js\jquery-3.4.1.min.js" />
+    <Content Include="Content\Assets\js\jquery-3.4.1.slim.min.js" />
+    <Content Include="Content\Assets\js\jquery.validate.min.js" />
+    <Content Include="Content\Assets\js\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Content\Assets\js\modernizr-2.8.3.js" />
+    <Content Include="Content\Assets\js\popper.min.js" />
+    <Content Include="Content\Assets\js\respond.min.js" />
     <Content Include="Content\bootstrap-grid.css" />
     <Content Include="Content\bootstrap-grid.min.css" />
     <Content Include="Content\bootstrap-reboot.css" />
@@ -803,13 +819,35 @@
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
-    <Content Include="readme.txt" />
-    <Content Include="Content\bootstrap.min.css.map" />
-    <Content Include="Content\bootstrap.css.map" />
-    <Content Include="Content\bootstrap-reboot.min.css.map" />
-    <Content Include="Content\bootstrap-reboot.css.map" />
-    <Content Include="Content\bootstrap-grid.min.css.map" />
-    <Content Include="Content\bootstrap-grid.css.map" />
+    <Content Include="Areas\Admin\Views\CategoryManagement\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\CategoryManagement\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\CategoryManagement\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\CommentManagement\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\CommentManagement\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\CommentManagement\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\PostManagement\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\PostManagement\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\PostManagement\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Shared\_AdminLayout.cshtml" />
+    <Content Include="Areas\Admin\Views\TagManagement\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\TagManagement\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\TagManagement\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\web.config" />
+    <Content Include="Areas\Admin\Views\_ViewStart.cshtml" />
+    <Content Include="Areas\Identity\Views\RolesAdmin\Create.cshtml" />
+    <Content Include="Areas\Identity\Views\RolesAdmin\Delete.cshtml" />
+    <Content Include="Areas\Identity\Views\RolesAdmin\Details.cshtml" />
+    <Content Include="Areas\Identity\Views\RolesAdmin\Edit.cshtml" />
+    <Content Include="Areas\Identity\Views\RolesAdmin\Index.cshtml" />
+    <Content Include="Areas\Identity\Views\Shared\_IdentityLayout.cshtml" />
+    <Content Include="Areas\Identity\Views\UsersAdmin\Create.cshtml" />
+    <Content Include="Areas\Identity\Views\UsersAdmin\Delete.cshtml" />
+    <Content Include="Areas\Identity\Views\UsersAdmin\Details.cshtml" />
+    <Content Include="Areas\Identity\Views\UsersAdmin\Edit.cshtml" />
+    <Content Include="Areas\Identity\Views\UsersAdmin\Index.cshtml" />
+    <Content Include="Areas\Identity\Views\Web.config" />
+    <Content Include="Areas\Identity\Views\_ViewStart.cshtml" />
+    <Content Include="assets\css\bootstrap.min.css.map" />
     <Content Include="assets\css\breadcrumb.css.map" />
     <Content Include="assets\css\style.css.map" />
     <Content Include="assets\css\_button.css.map" />
@@ -823,6 +861,7 @@
     <Content Include="assets\fonts\fontawesome-webfont.woff2" />
     <Content Include="assets\fonts\FontAwesome.otf" />
     <Content Include="assets\img\elements\_DS_Store" />
+    <Content Include="assets\js\bootstrap.min.js.map" />
     <Content Include="assets\js\ckeditor\CHANGES.md" />
     <Content Include="assets\js\ckeditor\LICENSE.md" />
     <Content Include="assets\js\ckeditor\plugins\scayt\CHANGELOG.md" />
@@ -838,6 +877,9 @@
     <Content Include="assets\js\ckeditor\samples\toolbarconfigurator\font\fontello.woff" />
     <Content Include="assets\js\ckeditor\samples\toolbarconfigurator\lib\codemirror\LICENSE" />
     <Content Include="assets\js\ckeditor\skins\moono-lisa\readme.md" />
+    <Content Include="assets\js\jquery-3.4.1.min.map" />
+    <Content Include="assets\js\jquery-3.4.1.slim.min.map" />
+    <Content Include="assets\js\popper.min.js.map" />
     <Content Include="assets\scss\breadcrumb.scss" />
     <Content Include="assets\scss\style.scss" />
     <Content Include="assets\scss\_blog.scss" />
@@ -853,39 +895,50 @@
     <Content Include="assets\vendors\linericon\fonts\Linearicons-Free.ttf" />
     <Content Include="assets\vendors\linericon\fonts\Linearicons-Free.woff" />
     <Content Include="assets\vendors\linericon\fonts\Linearicons-Free.woff2" />
-    <Content Include="Areas\Admin\Views\web.config" />
-    <Content Include="Areas\Admin\Views\_ViewStart.cshtml" />
-    <Content Include="Areas\Admin\Views\Shared\_AdminLayout.cshtml" />
-    <Content Include="Areas\Admin\Views\CategoryManagement\Create.cshtml" />
-    <Content Include="Areas\Admin\Views\CategoryManagement\Edit.cshtml" />
-    <Content Include="Areas\Admin\Views\CategoryManagement\Index.cshtml" />
-    <Content Include="Areas\Admin\Views\TagManagement\Create.cshtml" />
-    <Content Include="Areas\Admin\Views\TagManagement\Edit.cshtml" />
-    <Content Include="Areas\Admin\Views\TagManagement\Index.cshtml" />
-    <Content Include="Areas\Admin\Views\PostManagement\Create.cshtml" />
-    <Content Include="Areas\Admin\Views\PostManagement\Edit.cshtml" />
-    <Content Include="Areas\Admin\Views\PostManagement\Index.cshtml" />
-    <Content Include="Areas\Admin\Views\CommentManagement\Create.cshtml" />
-    <Content Include="Areas\Admin\Views\CommentManagement\Edit.cshtml" />
-    <Content Include="Areas\Admin\Views\CommentManagement\Index.cshtml" />
-    <Content Include="assets\js\popper.min.js.map" />
-    <Content Include="assets\js\jquery-3.4.1.slim.min.map" />
-    <Content Include="assets\js\jquery-3.4.1.min.map" />
-    <Content Include="assets\js\bootstrap.min.js.map" />
-    <Content Include="assets\css\bootstrap.min.css.map" />
-    <Content Include="Areas\Identity\Views\_ViewStart.cshtml" />
-    <Content Include="Areas\Identity\Views\Web.config" />
-    <Content Include="Areas\Identity\Views\UsersAdmin\Index.cshtml" />
-    <Content Include="Areas\Identity\Views\UsersAdmin\Edit.cshtml" />
-    <Content Include="Areas\Identity\Views\UsersAdmin\Details.cshtml" />
-    <Content Include="Areas\Identity\Views\UsersAdmin\Delete.cshtml" />
-    <Content Include="Areas\Identity\Views\UsersAdmin\Create.cshtml" />
-    <Content Include="Areas\Identity\Views\Shared\_IdentityLayout.cshtml" />
-    <Content Include="Areas\Identity\Views\RolesAdmin\Index.cshtml" />
-    <Content Include="Areas\Identity\Views\RolesAdmin\Edit.cshtml" />
-    <Content Include="Areas\Identity\Views\RolesAdmin\Details.cshtml" />
-    <Content Include="Areas\Identity\Views\RolesAdmin\Delete.cshtml" />
-    <Content Include="Areas\Identity\Views\RolesAdmin\Create.cshtml" />
+    <Content Include="Content\bootstrap-grid.css.map" />
+    <Content Include="Content\bootstrap-grid.min.css.map" />
+    <Content Include="Content\bootstrap-reboot.css.map" />
+    <Content Include="Content\bootstrap-reboot.min.css.map" />
+    <Content Include="readme.txt" />
+    <Content Include="Scripts\bootstrap.bundle.js" />
+    <Content Include="Scripts\bootstrap.bundle.min.js" />
+    <Content Include="Scripts\bootstrap.js" />
+    <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Scripts\esm\popper-utils.js" />
+    <Content Include="Scripts\esm\popper-utils.min.js" />
+    <Content Include="Scripts\esm\popper.js" />
+    <Content Include="Scripts\esm\popper.min.js" />
+    <Content Include="Scripts\esm\popper.min.js.map" />
+    <Content Include="Scripts\esm\popper.js.map" />
+    <Content Include="Scripts\esm\popper-utils.min.js.map" />
+    <Content Include="Scripts\esm\popper-utils.js.map" />
+    <Content Include="Scripts\bootstrap.min.js.map" />
+    <Content Include="Scripts\bootstrap.js.map" />
+    <Content Include="Scripts\bootstrap.bundle.min.js.map" />
+    <Content Include="Scripts\bootstrap.bundle.js.map" />
+    <None Include="Scripts\jquery-3.4.1.intellisense.js" />
+    <Content Include="Scripts\jquery-3.4.1.js" />
+    <Content Include="Scripts\jquery-3.4.1.min.js" />
+    <Content Include="Scripts\jquery-3.4.1.slim.js" />
+    <Content Include="Scripts\jquery-3.4.1.slim.min.js" />
+    <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery.validate.js" />
+    <Content Include="Scripts\jquery.validate.min.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\modernizr-2.8.3.js" />
+    <Content Include="Scripts\popper-utils.js" />
+    <Content Include="Scripts\popper-utils.min.js" />
+    <Content Include="Scripts\popper.js" />
+    <Content Include="Scripts\popper.min.js" />
+    <Content Include="Scripts\respond.js" />
+    <Content Include="Scripts\respond.matchmedia.addListener.js" />
+    <Content Include="Scripts\respond.matchmedia.addListener.min.js" />
+    <Content Include="Scripts\respond.min.js" />
+    <Content Include="Scripts\umd\popper-utils.js" />
+    <Content Include="Scripts\umd\popper-utils.min.js" />
+    <Content Include="Scripts\umd\popper.js" />
+    <Content Include="Scripts\umd\popper.min.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -900,50 +953,62 @@
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Account\ConfirmEmail.cshtml" />
+    <Content Include="Views\Account\DisplayEmail.cshtml" />
+    <Content Include="Views\Account\ExternalLoginConfirmation.cshtml" />
+    <Content Include="Views\Account\ExternalLoginFailure.cshtml" />
+    <Content Include="Views\Account\ForgotPassword.cshtml" />
+    <Content Include="Views\Account\ForgotPasswordConfirmation.cshtml" />
+    <Content Include="Views\Account\Login.cshtml" />
+    <Content Include="Views\Account\Register.cshtml" />
+    <Content Include="Views\Account\ResetPassword.cshtml" />
+    <Content Include="Views\Account\ResetPasswordConfirmation.cshtml" />
+    <Content Include="Views\Account\SendCode.cshtml" />
+    <Content Include="Views\Account\VerifyCode.cshtml" />
+    <Content Include="Views\Account\_ExternalLoginsListPartial.cshtml" />
+    <Content Include="Views\Categories\_CategoryRightMenu.cshtml" />
     <Content Include="Views\Home\_AboutMe.cshtml" />
-    <Content Include="Views\Shared\_PostOverview.cshtml" />
-    <Content Include="Views\Shared\_Footer.cshtml" />
-    <Content Include="Views\Posts\Index.cshtml" />
-    <Content Include="Views\Posts\Details.cshtml" />
-    <Content Include="Views\Posts\_PopularPosts.cshtml" />
-    <Content Include="Views\Tags\_PopularTags.cshtml" />
-    <Content Include="Views\Shared\_ListPosts.cshtml" />
     <Content Include="Views\Home\_Menu.cshtml" />
     <Content Include="Views\Home\_PostSlider.cshtml" />
-    <Content Include="Views\Posts\_LastestPosts.cshtml" />
-    <Content Include="Views\Shared\_RightMenu.cshtml" />
-    <Content Include="Views\Categories\_CategoryRightMenu.cshtml" />
-    <Content Include="Views\Shared\_Banner.cshtml" />
-    <Content Include="Views\Posts\_PostBanner.cshtml" />
-    <Content Include="Views\Shared\_CommentArea.cshtml" />
-    <Content Include="Views\Shared\_LoginPartial.cshtml" />
-    <Content Include="Views\Shared\Lockout.cshtml" />
-    <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
-    <Content Include="Views\Manage\SetPassword.cshtml" />
-    <Content Include="Views\Manage\ManageLogins.cshtml" />
-    <Content Include="Views\Manage\Index.cshtml" />
-    <Content Include="Views\Manage\ChangePassword.cshtml" />
     <Content Include="Views\Manage\AddPhoneNumber.cshtml" />
-    <Content Include="Views\Account\_ExternalLoginsListPartial.cshtml" />
-    <Content Include="Views\Account\VerifyCode.cshtml" />
-    <Content Include="Views\Account\SendCode.cshtml" />
-    <Content Include="Views\Account\ResetPasswordConfirmation.cshtml" />
-    <Content Include="Views\Account\ResetPassword.cshtml" />
-    <Content Include="Views\Account\Register.cshtml" />
-    <Content Include="Views\Account\Login.cshtml" />
-    <Content Include="Views\Account\ForgotPasswordConfirmation.cshtml" />
-    <Content Include="Views\Account\ForgotPassword.cshtml" />
-    <Content Include="Views\Account\ExternalLoginFailure.cshtml" />
-    <Content Include="Views\Account\ExternalLoginConfirmation.cshtml" />
-    <Content Include="Views\Account\DisplayEmail.cshtml" />
-    <Content Include="Views\Account\ConfirmEmail.cshtml" />
+    <Content Include="Views\Manage\ChangePassword.cshtml" />
+    <Content Include="Views\Manage\Index.cshtml" />
+    <Content Include="Views\Manage\ManageLogins.cshtml" />
+    <Content Include="Views\Manage\SetPassword.cshtml" />
+    <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
+    <Content Include="Views\Posts\Details.cshtml" />
+    <Content Include="Views\Posts\Index.cshtml" />
+    <Content Include="Views\Posts\_LastestPosts.cshtml" />
+    <Content Include="Views\Posts\_PopularPosts.cshtml" />
+    <Content Include="Views\Posts\_PostBanner.cshtml" />
+    <Content Include="Views\Shared\Lockout.cshtml" />
+    <Content Include="Views\Shared\_Banner.cshtml" />
+    <Content Include="Views\Shared\_CommentArea.cshtml" />
+    <Content Include="Views\Shared\_Footer.cshtml" />
+    <Content Include="Views\Shared\_ListPosts.cshtml" />
+    <Content Include="Views\Shared\_LoginPartial.cshtml" />
+    <Content Include="Views\Shared\_PostOverview.cshtml" />
+    <Content Include="Views\Shared\_RightMenu.cshtml" />
+    <Content Include="Views\Tags\_PopularTags.cshtml" />
+    <Content Include="Scripts\umd\popper.min.js.map" />
+    <Content Include="Scripts\umd\popper.js.map" />
+    <Content Include="Scripts\umd\popper-utils.min.js.map" />
+    <Content Include="Scripts\umd\popper-utils.js.map" />
+    <Content Include="Scripts\README.md" />
+    <Content Include="Scripts\popper.min.js.map" />
+    <Content Include="Scripts\popper.js.map" />
+    <Content Include="Scripts\popper-utils.min.js.map" />
+    <Content Include="Scripts\popper-utils.js.map" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\Comments\" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\bootstrap.min.css.map" />
+    <Content Include="Content\bootstrap.css.map" />
     <None Include="packages.config" />
+    <Content Include="Scripts\jquery-3.4.1.slim.min.map" />
+    <Content Include="Scripts\jquery-3.4.1.min.map" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\FA.JustBlog.Common\FA.JustBlog.Common.csproj">
@@ -964,14 +1029,13 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
+    <TypeScriptCompile Include="Scripts\index.d.ts" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
   </PropertyGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
-  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets" Condition="Exists('$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets')" />
   <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
   <Target Name="MvcBuildViews" AfterTargets="AfterBuild" Condition="'$(MvcBuildViews)'=='true'">
@@ -983,9 +1047,9 @@
         <WebProjectProperties>
           <UseIIS>True</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
-          <DevelopmentServerPort>60209</DevelopmentServerPort>
+          <DevelopmentServerPort>63140</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>https://localhost:44349/</IISUrl>
+          <IISUrl>https://localhost:44327/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>
