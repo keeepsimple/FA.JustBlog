@@ -1,10 +1,7 @@
 ﻿using FA.JustBlog.MVC.ViewModels;
 using FA.JustBlog.Services;
-using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using System.Web;
 using System.Web.Mvc;
 
 namespace FA.JustBlog.MVC.Controllers
@@ -34,13 +31,14 @@ namespace FA.JustBlog.MVC.Controllers
 
         public ActionResult CategoryRightMenu()
         {
-            var categories = _categoryServices.GetAll().Select(x => new CategoryRightMenuViewModel
-            {
-                Id = x.Id,
-                Name = x.Name,
-                PostsCount = x.Posts.Count,
-                UrlSlug = x.UrlSlug
-            }) ;
+            var categories = _categoryServices.GetAll()
+                .Select(x => new CategoryRightMenuViewModel
+                {
+                    Id = x.Id,
+                    Name = x.Name,
+                    PostsCount = x.Posts.Count,
+                    UrlSlug = x.UrlSlug
+                });
             return PartialView("_CategoryRightMenu", categories);
         }
     }

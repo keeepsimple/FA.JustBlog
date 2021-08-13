@@ -1,4 +1,5 @@
 ﻿using FA.JustBlog.Models.Common;
+using FA.JustBlog.MVC.Areas.Admin.ViewModels;
 using FA.JustBlog.Services;
 using System;
 using System.Linq;
@@ -12,10 +13,12 @@ namespace FA.JustBlog.MVC.Controllers
     public class PostsController : Controller
     {
         private readonly IPostServices _postServices;
+        private readonly ICommentServices _commentServices;
 
-        public PostsController(IPostServices postServices)
+        public PostsController(IPostServices postServices, ICommentServices commentServices)
         {
             _postServices = postServices;
+            _commentServices = commentServices;
         }
 
         //GET: Posts
@@ -115,6 +118,39 @@ namespace FA.JustBlog.MVC.Controllers
                 int years = Convert.ToInt32(Math.Floor((double)time.Days / 365));
                 return years == 1 ? "one year ago" : years + " years ago";
             }
+        }
+
+        [HttpPost]
+        public async Task<ActionResult> CreateComment(CommentCreateViewModel commentCreateViewModel)
+        {
+            var comment = new Comment()
+            {
+                Id = Guid.NewGuid(),
+                Name = commentCreateViewModel.Name,
+                Email = commentCreateViewModel.Email,
+                CommentHeader = commentCreateViewModel.CommentHeader,
+                CommentText = commentCreateViewModel.CommentText,
+                PostId = commentCreateViewModel.PostId
+            };
+
+            var result = await _commentServices.AddAsync(comment);
+            if(result < 0)
+            {
+                return Json(new { errorMessage = "Comment Failed" });
+            }
+
+            var commentViewModel = new CommentViewModel()
+            {
+                Id = comment.Id,
+                Name = commentCreateViewModel.Name,
+                Email = commentCreateViewModel.Email,
+                CommentHeader = commentCreateViewModel.CommentHeader,
+                CommentText = commentCreateViewModel.CommentText,
+                PostId = commentCreateViewModel.PostId,
+                CommentTime = comment.CommentTime.ToString("MMM dd yyyy")
+            };
+
+            return Json(commentViewModel);
         }
     }
 }

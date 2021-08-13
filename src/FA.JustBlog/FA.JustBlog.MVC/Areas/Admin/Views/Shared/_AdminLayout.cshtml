@@ -30,6 +30,9 @@
                 <li>
                     <a href="@Url.Action("Index", "TagManagement", new { area = "admin"})"><i class="fas fa-tags"></i> Tag</a>
                 </li>
+                <li>
+                    <a href="@Url.Action("Index","CommentManagement", new { area = "admin"})"><i class="fas fa-comments"></i> Comment</a>
+                </li>
                 @if (Request.IsAuthenticated && User.IsInRole("Admin"))
                 {
                     <li>

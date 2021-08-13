@@ -105,6 +105,7 @@ namespace FA.JustBlog.MVC.Areas.Admin.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [ValidateInput(false)]
         public ActionResult Create(TagViewModel TagViewModel)
         {
             if (ModelState.IsValid)

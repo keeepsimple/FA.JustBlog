@@ -5,7 +5,7 @@ namespace FA.JustBlog.MVC.ViewModels
 {
     public class CategoryMenuViewModel
     {
-        public IEnumerable<Category> PopularCategories { get; set; }
-        public IEnumerable<Category> RemainCategories { get; set; }
+        public virtual IEnumerable<Category> PopularCategories { get; set; }
+        public virtual IEnumerable<Category> RemainCategories { get; set; }
     }
 }

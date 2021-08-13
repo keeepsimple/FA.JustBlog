@@ -14,10 +14,10 @@ namespace FA.JustBlog.MVC.Controllers
             _commentServices = commentServices;
         }
 
-        public ActionResult GetCommentByPost(Guid id)
-        {
-            var comments = Task.Run(() => _commentServices.GetCommentsForPostAsync(id)).Result;
-            return PartialView("_Comment", comments);
-        }
+        //[HttpPost]
+        //public async Task<ActionResult> Create(Guid postId, string commentName, string commentEmail, string commentTitle, string commentBody)
+        //{
+
+        //}
     }
 }
