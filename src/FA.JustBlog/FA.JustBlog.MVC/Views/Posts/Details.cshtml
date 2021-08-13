@@ -66,7 +66,30 @@
                     </div>
                     <div class="comments-area" id="comment-area">
                         <h4>@Model.Comments.Count @(Model.Comments.Count<=1?"Comment":"Comments")</h4>
-                        @Html.Partial("_CommentArea", Model.Comments)
+                        <div class="comment-list">
+                            @Html.Partial("_CommentArea", Model.Comments)
+                        </div>
+                        <div class="comment-form">
+                            <h4>Leave a Reply</h4>
+                            <form>
+                                @Html.HiddenFor(x => x.Id, new { id = "post-id" })
+                                <div class="form-group form-inline">
+                                    <div class="form-group col-lg-6 col-md-6 name">
+                                        <input type="text" class="form-control" id="name" name="name" placeholder="Enter Name" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter Name'">
+                                    </div>
+                                    <div class="form-group col-lg-6 col-md-6 email">
+                                        <input type="email" class="form-control" id="email" name="email" placeholder="Enter email address" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter email address'">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <input type="text" class="form-control" id="comment-header" name="commentHeader" placeholder="Subject" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Subject'">
+                                </div>
+                                <div class="form-group">
+                                    <textarea class="form-control mb-10" rows="5" id="comment-text" name="commentText" placeholder="Messege" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Messege'" required=""></textarea>
+                                </div>
+                                <button type="button" id="submit-comment" class="primary-btn submit_btn">Post Comment</button>
+                            </form>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -75,3 +98,45 @@
     </div>
 </section>
 
+@section scripts{
+    <script>
+        $(document).ready(function () {
+            $("#submit-comment").click(() => {
+                var postId = $("#post-id").val();
+                var name = $("#name").val();
+                var email = $("#email").val();
+                var commentHeader = $("#comment-header").val();
+                var commentText = $("#comment-text").val();
+
+                var comment = {
+                    postId: postId,
+                    name: name,
+                    email: email,
+                    commentHeader: commentHeader,
+                    commentText: commentText
+                }
+
+                $.post({
+                    url: "/Posts/CreateComment/",
+                    data: comment,
+                    success: data => {
+                        $(".comment-list").append(`
+                            <div class="single-comment justify-content-between d-flex">
+                                <div class="user justify-content-between d-flex">
+                                    <div class="thumb">
+                                        <img src="~/assets/img/blog/c4.jpg" alt="">
+                                    </div>
+                                    <div class="desc">
+                                        <h5><a href="#">${data.name}</a></h5>
+                                        <p class="date">${data.CommentTime}</p>
+                                        <p class="comment">${data.commentText}</p>
+                                    </div>
+                                </div>
+                            </div>
+                    `);
+                    }
+                })
+            })
+        });
+    </script>
+}

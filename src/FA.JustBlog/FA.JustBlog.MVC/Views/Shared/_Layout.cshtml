@@ -74,8 +74,8 @@
     @RenderBody();
     @Html.Partial("_Footer")
 
-    @*@Scripts.Render("~/bundles/jquery")
-        @Scripts.Render("~/bundles/bootstrap")*@
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)
     <script src="~/assets/js/jquery-3.2.1.min.js"></script>
     <script src="~/assets/js/popper.js"></script>
@@ -90,7 +90,7 @@
     <script src="~/assets/js/jquery.ajaxchimp.min.js"></script>
     <script src="~/assets/js/mail-script.js"></script>
     <script src="~/assets/js/theme.js"></script>
-    <script src="~/assets/js/justblog.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+    <script src="~/assets/js/justblog.js"></script>
 </body>
 </html>

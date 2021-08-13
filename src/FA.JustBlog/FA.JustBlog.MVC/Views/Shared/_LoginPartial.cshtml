@@ -9,11 +9,7 @@
                 <li class="nav-item"><a class="nav-link" href="@Url.Action("Index", "Manage", new { area = "" })">Account Settings</a></li>
                 @if (User.IsInRole("Contributer") || User.IsInRole("Admin"))
                 {
-                    <li class="nav-item"><a class="nav-link" href="@Url.Action("CategoryManagement", "Admin")">Contribute Dashboard</a></li>
-                }
-                @if (User.IsInRole("Admin"))
-                {
-                    <li class="nav-item"><a class="nav-link" href="@Url.Action("Index", "RolesAdmin", new { area = "Identity" })">Admin Dashboard</a></li>
+                    <li class="nav-item"><a class="nav-link" href="@Url.Action("CategoryManagement", "Admin")">Dashboard</a></li>
                 }
                 <li class="nav-item"><a class="nav-link" href="javascript:document.getElementById('logoutForm').submit()">Log off</a>
             </ul>

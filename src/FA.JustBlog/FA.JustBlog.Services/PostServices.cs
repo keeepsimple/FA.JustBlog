@@ -98,7 +98,8 @@ namespace FA.JustBlog.Services
 
         public async Task<Post> FindPostAsync(int year, int month, string title)
         {
-            return await _unitOfWork.PostRepository.GetQuery().FirstOrDefaultAsync(x=>x.PublishedDate.Year == year && x.PublishedDate.Month == month && x.UrlSlug.Equals(title));
+            return await _unitOfWork.GenericRepository<Post>().GetQuery().Include("Comments")
+                .FirstOrDefaultAsync(x=>x.PublishedDate.Year == year && x.PublishedDate.Month == month && x.UrlSlug.Equals(title));
         }
 
         public IEnumerable<Post> GetMostViewedPost(int size)
