@@ -50,7 +50,7 @@
         <div class="form-group col-md-6">
             @Html.LabelFor(model => model.CategoryId, "CategoryId", htmlAttributes: new { @class = "control-label" })
             <div>
-                @Html.DropDownList("CategoryId", null, htmlAttributes: new { @class = "select-single" })
+                @Html.DropDownList("CategoryId", null, htmlAttributes: new { @class = "select-single", style="width: 100%" })
                 @Html.ValidationMessageFor(model => model.CategoryId, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -124,4 +124,5 @@
 @section scripts {
     <script src="~/assets/js/ckeditor/ckeditor.js"></script>
     <script src="~/assets/js/ckeditor/ckeditorconfig.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
 }
