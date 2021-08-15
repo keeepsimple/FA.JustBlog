@@ -70,10 +70,17 @@ else
                     @category.UpdatedAt
                 </td>
                 <td class="col-md-2">
-                    <form action="@Url.Action("Delete", "CategoryManagement", new{ id = category.Id })" method="post">
-                        <a href="@Url.Action("Edit", "CategoryManagement", new { id = category.Id})" class="btn btn-primary"><i class="fas fa-edit"></i></a>
-                        <button type="submit" onclick="return confirm('Are you sure to delete this category?');" class="btn btn-danger"><i class="fas fa-trash"></i></button>
-                    </form>
+                    @if (Request.IsAuthenticated && User.IsInRole("Admin"))
+                    {
+                        <form action="@Url.Action("Delete", "CategoryManagement", new { id = category.Id })" method="post">
+                            <a href="@Url.Action("Edit", "CategoryManagement", new { id = category.Id })" class="btn btn-primary"><i class="fas fa-edit"></i></a>
+                            <button type="submit" onclick="return confirm('Are you sure to delete this category?');" class="btn btn-danger"><i class="fas fa-trash"></i></button>
+                        </form>
+                    }
+                    @if (Request.IsAuthenticated && User.IsInRole("Contributer"))
+                    {
+                        <a href="@Url.Action("Edit", "CategoryManagement", new { id = category.Id })" class="btn btn-primary"><i class="fas fa-edit"></i></a>
+                    }
                 </td>
             </tr>
         }
