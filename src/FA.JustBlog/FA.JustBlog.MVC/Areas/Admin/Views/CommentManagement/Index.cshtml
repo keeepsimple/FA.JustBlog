@@ -70,10 +70,17 @@ else
                     @Comment.UpdatedAt
                 </td>
                 <td class="col-md-2">
-                    <form action="@Url.Action("Delete", "CommentManagement", new{ id = Comment.Id })" method="post">
-                        <a href="@Url.Action("Edit", "CommentManagement", new { id = Comment.Id})" class="btn btn-primary"><i class="fas fa-edit"></i></a>
-                        <button type="submit" onclick="return confirm('Are you sure to delete this Comment?');" class="btn btn-danger"><i class="fas fa-trash"></i></button>
-                    </form>
+                    @if (Request.IsAuthenticated && User.IsInRole("Admin"))
+                    {
+                        <form action="@Url.Action("Delete", "CommentManagement", new { id = Comment.Id })" method="post">
+                            <a href="@Url.Action("Edit", "CommentManagement", new { id = Comment.Id })" class="btn btn-primary"><i class="fas fa-edit"></i></a>
+                            <button type="submit" onclick="return confirm('Are you sure to delete this Comment?');" class="btn btn-danger"><i class="fas fa-trash"></i></button>
+                        </form>
+                    }
+                    @if (Request.IsAuthenticated && User.IsInRole("Contributer"))
+                    {
+                        <a href="@Url.Action("Edit", "CommentManagement", new { id = Comment.Id })" class="btn btn-primary"><i class="fas fa-edit"></i></a>
+                    }
                 </td>
             </tr>
         }
