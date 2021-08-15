@@ -24,6 +24,10 @@ namespace FA.JustBlog.Data.Infrastructure.Repositories
         /// <returns></returns>
         void Add(TEntity entity);
 
+        /// <summary>
+        /// Add list of <typeparamref name="TEntity"/>
+        /// </summary>
+        /// <param name="entities"></param>
         void Add(IEnumerable<TEntity> entities);
 
         /// <summary>
@@ -33,14 +37,41 @@ namespace FA.JustBlog.Data.Infrastructure.Repositories
         /// <returns></returns>
         void Delete(TEntity entity, bool isHardDelete = false);
 
+        /// <summary>
+        /// Delete list of <typeparamref name="TEntity"/>
+        /// </summary>
+        /// <param name="entities"></param>
+        /// <param name="isHardDelete"></param>
         void Delete(IEnumerable<TEntity> entities, bool isHardDelete = false);
 
+        /// <summary>
+        /// Delete an <typeparamref name="TEntity"/> have condition
+        /// </summary>
+        /// <param name="where"></param>
+        /// <param name="isHardDelete"></param>
         void Delete(Expression<Func<TEntity, bool>> where, bool isHardDelete = false);
 
+        /// <summary>
+        /// Get query
+        /// </summary>
+        /// <returns></returns>
         IQueryable<TEntity> GetQuery();
 
+        /// <summary>
+        /// Get query have condition
+        /// </summary>
+        /// <param name="where"></param>
+        /// <returns></returns>
         IQueryable<TEntity> GetQuery(Expression<Func<TEntity, bool>> where);
 
+        /// <summary>
+        /// Get list of <typeparamref name="TEntity"/>
+        /// </summary>
+        /// <param name="filter"></param>
+        /// <param name="orderBy"></param>
+        /// <param name="includeProperties"></param>
+        /// <param name="canLoadDeleted"></param>
+        /// <returns></returns>
         IQueryable<TEntity> Get(Expression<Func<TEntity, bool>> filter = null, Func<IQueryable<TEntity>, 
             IOrderedQueryable<TEntity>> orderBy = null, string includeProperties = "", bool canLoadDeleted = false);
 

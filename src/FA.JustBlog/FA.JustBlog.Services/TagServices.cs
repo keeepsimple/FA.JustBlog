@@ -19,9 +19,9 @@ namespace FA.JustBlog.Services
             return await _unitOfWork.TagRepository.GetQuery().Where(x => x.IsDeleted == false).OrderByDescending(t => t.Posts.Count).Take(size).ToListAsync();
         }
 
-        public async Task<IEnumerable<Tag>> GetPopularTags(int size)
+        public IEnumerable<Tag> GetPopularTags(int size)
         {
-            return await _unitOfWork.TagRepository.GetQuery().Where(x => x.IsDeleted == false).OrderByDescending(t => t.Posts.Count).Take(size).ToListAsync();
+            return _unitOfWork.TagRepository.GetQuery().Where(x => x.IsDeleted == false).OrderByDescending(t => t.Posts.Count).Take(size).ToList();
         }
 
         public Tag GetTagByUrlSlug(string urlSlug)
