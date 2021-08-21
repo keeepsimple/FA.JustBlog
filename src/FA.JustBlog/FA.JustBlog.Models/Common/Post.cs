@@ -50,7 +50,7 @@ namespace FA.JustBlog.Models.Common
         [Required(ErrorMessage = "The {0} is required")]
         public int TotalRate { get; set; }
 
-        public decimal Rate { get => TotalRate / RateCount; }
+        public decimal Rate => RateCount == 0 ? 0 : TotalRate / RateCount;
 
         public virtual ICollection<Comment> Comments { get; set; }
     }

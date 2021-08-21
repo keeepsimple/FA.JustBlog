@@ -88,12 +88,12 @@ namespace FA.JustBlog.Services.BaseServices
             return await _unitOfWork.SaveChangesAsync() > 0;
         }
 
-        public IEnumerable<TEntity> GetAll()
+        public virtual IEnumerable<TEntity> GetAll()
         {
             return _unitOfWork.GenericRepository<TEntity>().GetQuery().ToList();
         }
 
-        public async Task<IEnumerable<TEntity>> GetAllAsync()
+        public virtual async Task<IEnumerable<TEntity>> GetAllAsync()
         {
             return await _unitOfWork.GenericRepository<TEntity>().GetQuery().ToListAsync();
         }

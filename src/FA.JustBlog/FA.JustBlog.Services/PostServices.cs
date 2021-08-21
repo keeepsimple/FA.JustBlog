@@ -62,7 +62,7 @@ namespace FA.JustBlog.Services
 
         public async Task<IEnumerable<Post>> GetMostViewedPostAsync(int size)
         {
-            return await _unitOfWork.PostRepository.GetQuery().OrderByDescending(x=>x.ViewCount).Take(size).ToListAsync();
+            return await _unitOfWork.PostRepository.GetQuery().Include("Comments").OrderByDescending(x=>x.ViewCount).Take(size).ToListAsync();
         }
 
         public async Task<IEnumerable<Post>> GetPostsByCategoryAsync(string category)
@@ -98,12 +98,13 @@ namespace FA.JustBlog.Services
 
         public async Task<Post> FindPostAsync(int year, int month, string title)
         {
-            return await _unitOfWork.PostRepository.GetQuery().FirstOrDefaultAsync(x=>x.PublishedDate.Year == year && x.PublishedDate.Month == month && x.UrlSlug.Equals(title));
+            return await _unitOfWork.GenericRepository<Post>().GetQuery().Include("Comments")
+                .FirstOrDefaultAsync(x=>x.PublishedDate.Year == year && x.PublishedDate.Month == month && x.UrlSlug.Equals(title));
         }
 
         public IEnumerable<Post> GetMostViewedPost(int size)
         {
-            return _unitOfWork.PostRepository.GetQuery().OrderByDescending(x => x.ViewCount).Take(size).ToList();
+            return _unitOfWork.PostRepository.GetQuery().Include("Comments").OrderByDescending(x => x.ViewCount).Take(size).ToList();
         }
     }
 }

@@ -51,7 +51,7 @@ namespace FA.JustBlog.Data
             BeforeSaveChanges();
             return base.SaveChanges();
         }
-
+         
         public override async Task<int> SaveChangesAsync()
         {
             BeforeSaveChanges();
