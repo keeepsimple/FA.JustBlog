@@ -1,0 +1,39 @@
+﻿@model IEnumerable<IdentityRole>
+
+@{
+    ViewBag.Title = "Roles Admin";
+}
+
+<h2 style="text-align:center">Roles Admin</h2>
+<hr />
+<div >
+    <a href="@Url.Action("Create", "RolesAdmin")" class="btn btn-primary float-left" style="margin-bottom: 10px"><span class="fas fa-plus-square"></span></a>
+</div>
+
+<table class="table table-condensed table-bordered">
+    <tr class="d-flex center-title">
+
+        <th class="col-md-6">
+            @Html.DisplayNameFor(model => model.Name)
+        </th>
+        <th class="col-md-6">Manage</th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr class="d-flex center-title">
+            <td class="col-md-6">
+                <a href="@Url.Action("Edit", new { id = item.Id})">
+                    @item.Name
+                </a>
+            </td>
+            <td class="col-md-6">
+                <form action="@Url.Action("Delete", "RolesAdmin", new{ id = item.Id })" method="post">
+                    <a href="@Url.Action("Edit", "RolesAdmin", new { id = item.Id})" class="btn btn-primary"><i class="fas fa-edit"></i></a>
+                    <button type="submit" onclick="return confirm('Are you sure to delete this roles?');" class="btn btn-danger"><i class="fas fa-trash"></i></button>
+                </form>
+            </td>
+        </tr>
+    }
+
+</table>

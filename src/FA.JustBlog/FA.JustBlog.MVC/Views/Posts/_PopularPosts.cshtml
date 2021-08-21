@@ -1,0 +1,18 @@
+﻿@model  IEnumerable<Post>
+
+<aside class="single_sidebar_widget popular_post_widget">
+    <h3 class="widget_title">Popular Posts</h3>
+    @foreach (var item in Model)
+    {
+        <div class="media post_item shadow-card">
+            <a href="@Url.Action("Details", "Posts", new { year = item.PublishedDate.Year, month = item.PublishedDate.Month.ToString("D2"), urlSlug = item.UrlSlug})">
+                <img class="img-right-sidebar" src="~/assets/img/home-blog/@item.ImageUrl" alt="post">
+            </a>
+            <div class="media-body">
+                <a href="@Url.Action("Details", "Posts", new { year = item.PublishedDate.Year, month = item.PublishedDate.Month.ToString("D2"), urlSlug = item.UrlSlug})"><h3>@item.Title</h3></a>
+                <p>@Html.Action("ConvertTimePublished", "Posts", new { item.PublishedDate })</p>
+            </div>
+        </div>
+    }
+    <div class="br"></div>
+</aside>
