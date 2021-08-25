@@ -1,13 +1,10 @@
-﻿using FA.JustBlog.Models.BaseEntities;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
 
-namespace FA.JustBlog.Models.Common
+namespace FA.JustBlog.Api.ViewModels
 {
-    [Table("Posts", Schema = "common")]
-    public class Post : BaseEntity
+    public class PostEditViewModel : BaseViewModel
     {
         [Required(ErrorMessage = "The {0} is required")]
         [StringLength(255, ErrorMessage = "The {0} must between {2} and {1} characters", MinimumLength = 3)]
@@ -32,23 +29,8 @@ namespace FA.JustBlog.Models.Common
 
         public bool Published { get; set; }
 
-        public DateTime PublishedDate { get; set; }
-
-        [ForeignKey("Category")]
         public Guid CategoryId { get; set; }
 
-        public virtual Category Category { get; set; }
-
-        public virtual ICollection<Tag> Tags { get; set; }
-
-        public int ViewCount { get; set; }
-
-        public int RateCount { get; set; }
-
-        public int TotalRate { get; set; }
-
-        public decimal Rate => RateCount == 0 ? 0 : TotalRate / RateCount;
-
-        public virtual ICollection<Comment> Comments { get; set; }
+        public List<Guid> TagIds { get; set; }
     }
 }

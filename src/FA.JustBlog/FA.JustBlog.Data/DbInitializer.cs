@@ -9,7 +9,7 @@ using System.Linq;
 
 namespace FA.JustBlog.Data
 {
-    internal class DbInitializer : DropCreateDatabaseIfModelChanges<JustBlogContext>
+    internal class DbInitializer : DropCreateDatabaseAlways<JustBlogContext>
     {
         protected override void Seed(JustBlogContext context)
         {

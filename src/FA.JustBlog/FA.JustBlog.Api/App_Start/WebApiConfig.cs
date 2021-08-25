@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web.Http;
 
-namespace FA.JustBlog.WebApi
+namespace FA.JustBlog.Api
 {
     public static class WebApiConfig
     {
@@ -21,7 +21,7 @@ namespace FA.JustBlog.WebApi
             config.Formatters.JsonFormatter.SerializerSettings.ReferenceLoopHandling
             = ReferenceLoopHandling.Serialize;
             config.Formatters.JsonFormatter.SerializerSettings.PreserveReferencesHandling
-            = PreserveReferencesHandling.Objects;
+            = PreserveReferencesHandling.None;
 
             // Web API routes
             config.MapHttpAttributeRoutes();

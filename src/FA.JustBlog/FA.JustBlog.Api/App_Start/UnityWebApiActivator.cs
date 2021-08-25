@@ -2,10 +2,10 @@ using System.Web.Http;
 
 using Unity.AspNet.WebApi;
 
-[assembly: WebActivatorEx.PreApplicationStartMethod(typeof(FA.JustBlog.WebApi.UnityWebApiActivator), nameof(FA.JustBlog.WebApi.UnityWebApiActivator.Start))]
-[assembly: WebActivatorEx.ApplicationShutdownMethod(typeof(FA.JustBlog.WebApi.UnityWebApiActivator), nameof(FA.JustBlog.WebApi.UnityWebApiActivator.Shutdown))]
+[assembly: WebActivatorEx.PreApplicationStartMethod(typeof(FA.JustBlog.Api.UnityWebApiActivator), nameof(FA.JustBlog.Api.UnityWebApiActivator.Start))]
+[assembly: WebActivatorEx.ApplicationShutdownMethod(typeof(FA.JustBlog.Api.UnityWebApiActivator), nameof(FA.JustBlog.Api.UnityWebApiActivator.Shutdown))]
 
-namespace FA.JustBlog.WebApi
+namespace FA.JustBlog.Api
 {
     /// <summary>
     /// Provides the bootstrapping for integrating Unity with WebApi when it is hosted in ASP.NET.

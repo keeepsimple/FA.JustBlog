@@ -5,7 +5,7 @@ using System;
 
 using Unity;
 
-namespace FA.JustBlog.WebApi
+namespace FA.JustBlog.Api
 {
     /// <summary>
     /// Specifies the Unity configuration for the main container.
@@ -44,6 +44,7 @@ namespace FA.JustBlog.WebApi
             // container.LoadConfiguration();
 
             // TODO: Register your type's mappings here.
+            // container.RegisterType<IProductRepository, ProductRepository>();
             container.RegisterSingleton<JustBlogContext, JustBlogContext>();
             container.RegisterType<IUnitOfWork, UnitOfWork>();
             container.RegisterType<ICategoryServices, CategoryServices>();

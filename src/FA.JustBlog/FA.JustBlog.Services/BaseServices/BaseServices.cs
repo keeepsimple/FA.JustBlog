@@ -88,13 +88,33 @@ namespace FA.JustBlog.Services.BaseServices
             return await _unitOfWork.SaveChangesAsync() > 0;
         }
 
-        public virtual IEnumerable<TEntity> GetAll()
+        public bool Delete(TEntity entity)
         {
+            _unitOfWork.GenericRepository<TEntity>().Delete(entity);
+            return _unitOfWork.SaveChanges() > 0;
+        }
+
+        public async Task<bool> DeleteAsync(TEntity entity)
+        {
+            _unitOfWork.GenericRepository<TEntity>().Delete(entity);
+            return await _unitOfWork.SaveChangesAsync() > 0;
+        }
+
+        public virtual IEnumerable<TEntity> GetAll(bool isIncludeDelete = false)
+        {
+            if (!isIncludeDelete)
+            {
+                return _unitOfWork.GenericRepository<TEntity>().GetQuery(x=>x.IsDeleted==isIncludeDelete).ToList();
+            }
             return _unitOfWork.GenericRepository<TEntity>().GetQuery().ToList();
         }
 
-        public virtual async Task<IEnumerable<TEntity>> GetAllAsync()
+        public virtual async Task<IEnumerable<TEntity>> GetAllAsync(bool isIncludeDelete = false)
         {
+            if (!isIncludeDelete)
+            {
+                return await _unitOfWork.GenericRepository<TEntity>().GetQuery(x => x.IsDeleted == isIncludeDelete).ToListAsync();
+            }
             return await _unitOfWork.GenericRepository<TEntity>().GetQuery().ToListAsync();
         }
 
