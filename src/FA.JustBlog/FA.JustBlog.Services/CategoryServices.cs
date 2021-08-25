@@ -16,12 +16,12 @@ namespace FA.JustBlog.Services
 
         public override IEnumerable<Category> GetAll()
         {
-            return _unitOfWork.GenericRepository<Category>().GetQuery().Include("Posts").ToList();
+            return _unitOfWork.GenericRepository<Category>().GetQuery().ToList();
         }
 
         public override async Task<IEnumerable<Category>> GetAllAsync()
         {
-            return await _unitOfWork.GenericRepository<Category>().GetQuery().Include("Posts").ToListAsync();
+            return await _unitOfWork.GenericRepository<Category>().GetQuery().ToListAsync();
         }
 
         public Category GetCategoryByUrlSlug(string urlSlug)

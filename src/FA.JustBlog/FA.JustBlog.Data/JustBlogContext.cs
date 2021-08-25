@@ -12,6 +12,8 @@ namespace FA.JustBlog.Data
     {
         public JustBlogContext() : base("JustBlogCnn")
         {
+            Configuration.LazyLoadingEnabled = false;
+            Configuration.ProxyCreationEnabled = false;
         }
 
         static JustBlogContext()
